@@ -12,9 +12,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeLayoutComponent } from './components/home-layout/home-layout.component';
+import { HomeHeaderComponent } from './components/home-layout/home-header/home-header.component';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, HomeLayoutComponent, HomeHeaderComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,

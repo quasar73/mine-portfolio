@@ -1,0 +1,100 @@
+.wrap {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../../../../assets/images/header-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    .overlap {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: relative;
+
+        .welcoming-text {
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -o-user-select: none;
+
+            .title {
+                font-size: 64pt;
+                line-height: 64pt;
+                margin-bottom: 32px;
+            }
+
+            .subtitle {
+                font-size: 20pt;
+                line-height: 20pt;
+            }
+        }
+
+        .header {
+            height: 80px;
+            width: 100vw;
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 32px;
+            padding-right: 32px;
+
+            user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -o-user-select: none;
+
+            .site-name {
+                display: flex;
+                align-items: center;
+
+                .title {
+                    color: white;
+                    font-size: 28pt;
+                    line-height: 28pt;
+                }
+
+                .logo {
+                    height: 48px;
+                    width: 48px;
+                    margin-right: 8px;
+                    object-fit: cover;
+                }
+            }
+
+            .header-actions {
+                display: flex;
+
+                a {
+                    color: white;
+                    font-size: 16pt;
+                    text-decoration: none;
+                    margin-right: 24px;
+
+                    &.active {
+                        text-decoration: underline;
+                    }
+
+                    &:hover {
+                        color: rgb(200, 200, 200);
+                    }
+                }
+            }
+        }
+    }
+}
