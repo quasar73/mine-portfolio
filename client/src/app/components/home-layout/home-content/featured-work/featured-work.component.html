@@ -1,0 +1,37 @@
+<div class="wrap">
+    <div class="title">
+        <div class="title-text">Избранные работы</div>
+        <div class="underline"></div>
+    </div>
+    <div class="content">
+        <div tuiCarouselButtons class="carousel">
+            <button
+                tuiIconButton
+                icon="tuiIconChevronLeftLarge"
+                title="Previous"
+                (click)="carousel.prev()"
+            ></button>
+            <tui-carousel #carousel [duration]="10000" [(index)]="index">
+                <ng-container *ngFor="let name of names">
+                    <div class="carousel-content" *tuiItem>
+                        <div class="carousel-image-wrap">
+                            <img
+                                src="../../../../../assets/images/header-background.jpg"
+                                alt="carousel-image"
+                            />
+                        </div>
+                        <div class="image-name">
+                            {{ name }}
+                        </div>
+                    </div>
+                </ng-container>
+            </tui-carousel>
+            <button
+                tuiIconButton
+                icon="tuiIconChevronRightLarge"
+                title="Next"
+                (click)="carousel.next()"
+            ></button>
+        </div>
+    </div>
+</div>
