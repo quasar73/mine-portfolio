@@ -11,7 +11,7 @@
                 title="Previous"
                 (click)="carousel.prev()"
             ></button>
-            <tui-carousel #carousel [duration]="10000" [(index)]="index">
+            <tui-carousel #carousel [duration]="5000" [(index)]="index">
                 <ng-container *ngFor="let name of names">
                     <div class="carousel-content" *tuiItem>
                         <div class="carousel-image-wrap">
