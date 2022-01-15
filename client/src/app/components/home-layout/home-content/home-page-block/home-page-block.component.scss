@@ -1,0 +1,24 @@
+.wrap {
+    margin-top: 64px;
+
+    .title {
+        margin-bottom: 48px;
+
+        .title-text {
+            font-size: 32pt;
+            line-height: 32pt;
+        }
+
+        .underline {
+            height: 8px;
+            width: 420px;
+            background-color: var(--tui-link);
+            border-radius: 4px;
+            margin-top: 8px;
+        }
+    }
+
+    .content {
+        margin-top: 16px;
+    }
+}

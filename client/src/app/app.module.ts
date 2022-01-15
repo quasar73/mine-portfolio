@@ -6,6 +6,9 @@ import {
     TuiNotificationsModule,
     TUI_SANITIZER,
     TuiButtonModule,
+    TuiSvgModule,
+    TuiTooltipModule,
+    TuiHintModule,
 } from '@taiga-ui/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,6 +20,8 @@ import { HomeHeaderComponent } from './components/home-layout/home-header/home-h
 import { HomeContentComponent } from './components/home-layout/home-content/home-content.component';
 import { FeaturedWorkComponent } from './components/home-layout/home-content/featured-work/featured-work.component';
 import { TuiCarouselModule, TuiPaginationModule } from '@taiga-ui/kit';
+import { AboutMeComponent } from './components/home-layout/home-content/about-me/about-me.component';
+import { HomePageBlockComponent } from './components/home-layout/home-content/home-page-block/home-page-block.component';
 
 @NgModule({
     declarations: [
@@ -25,6 +30,8 @@ import { TuiCarouselModule, TuiPaginationModule } from '@taiga-ui/kit';
         HomeHeaderComponent,
         HomeContentComponent,
         FeaturedWorkComponent,
+        AboutMeComponent,
+        HomePageBlockComponent,
     ],
     imports: [
         BrowserModule,
@@ -36,6 +43,9 @@ import { TuiCarouselModule, TuiPaginationModule } from '@taiga-ui/kit';
         TuiButtonModule,
         TuiCarouselModule,
         TuiPaginationModule,
+        TuiSvgModule,
+        TuiTooltipModule,
+        TuiHintModule,
     ],
     providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
     bootstrap: [AppComponent],

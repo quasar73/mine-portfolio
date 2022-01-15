@@ -1,0 +1,33 @@
+.about-me-grid {
+    display: grid;
+    grid-template-columns: 1fr 180px;
+    grid-template-rows: 1fr 32px;
+    gap: 32px;
+
+    .about-me-text {
+        font-size: 14pt;
+        line-height: 20pt;
+    }
+
+    img.player {
+        width: 180px;
+        -webkit-filter: drop-shadow(3px 3px 4px rgba(34, 34, 34, 0.6));
+        filter: drop-shadow(3px 3px 4px rgba(34, 34, 34, 0.6));
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+
+    .about-me-contacts {
+        display: grid;
+        grid-template-columns: repeat(2, 32px);
+        gap: 12px;
+
+        img {
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+        }
+    }
+}
