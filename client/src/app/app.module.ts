@@ -19,7 +19,11 @@ import { HomeLayoutComponent } from './components/home-layout/home-layout.compon
 import { HomeHeaderComponent } from './components/home-layout/home-header/home-header.component';
 import { HomeContentComponent } from './components/home-layout/home-content/home-content.component';
 import { FeaturedWorkComponent } from './components/home-layout/home-content/featured-work/featured-work.component';
-import { TuiCarouselModule, TuiPaginationModule } from '@taiga-ui/kit';
+import {
+    TuiCarouselModule,
+    TuiMarkerIconModule,
+    TuiPaginationModule,
+} from '@taiga-ui/kit';
 import { AboutMeComponent } from './components/home-layout/home-content/about-me/about-me.component';
 import { HomePageBlockComponent } from './components/home-layout/home-content/home-page-block/home-page-block.component';
 import { ContactMeComponent } from './components/home-layout/home-content/contact-me/contact-me.component';
@@ -55,6 +59,7 @@ import { BaseLayoutHeaderComponent } from './components/base-laytout/base-layout
         TuiTooltipModule,
         TuiHintModule,
         TuiLinkModule,
+        TuiMarkerIconModule,
     ],
     providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
     bootstrap: [AppComponent],

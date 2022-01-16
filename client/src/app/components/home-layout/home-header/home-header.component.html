@@ -25,15 +25,14 @@
         </div>
 
         <div class="scroll-down">
-            <button
+            <tui-marker-icon
+                size="s"
+                class="custom"
                 [@floatingArrow]="arrowState"
                 (@floatingArrow.done)="arrowState = !arrowState"
-                tuiIconButton
-                type="button"
-                appearance="icon"
-                icon="tuiIconArrowDownLarge"
+                src="tuiIconArrowDownLarge"
                 (click)="scrollClick.emit()"
-            ></button>
+            ></tui-marker-icon>
         </div>
     </div>
 </div>

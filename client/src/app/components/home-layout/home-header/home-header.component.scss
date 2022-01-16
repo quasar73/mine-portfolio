@@ -105,6 +105,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
+            .custom {
+                cursor: pointer;
+                color: white;
+                background: rgba(255, 255, 255, 0.3);
+            }
         }
     }
 }
