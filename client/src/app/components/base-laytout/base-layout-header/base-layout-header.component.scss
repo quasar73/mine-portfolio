@@ -1,0 +1,46 @@
+.wrap {
+    height: 80px;
+    width: 100vw;
+
+    .header {
+        height: 80px;
+        width: 100%;
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 32px;
+        padding-right: 32px;
+
+        user-select: none;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -o-user-select: none;
+
+        .site-name {
+            display: flex;
+            align-items: center;
+
+            .title {
+                color: var(--tui-link);
+                font-size: 28pt;
+                line-height: 28pt;
+            }
+
+            .logo {
+                height: 48px;
+                width: 48px;
+                margin-right: 8px;
+                object-fit: cover;
+            }
+        }
+
+        .header-actions {
+            display: flex;
+        }
+    }
+}
