@@ -9,10 +9,10 @@ import {
     TuiSvgModule,
     TuiTooltipModule,
     TuiHintModule,
+    TuiLinkModule,
 } from '@taiga-ui/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeLayoutComponent } from './components/home-layout/home-layout.component';
@@ -46,6 +46,7 @@ import { HomePageBlockComponent } from './components/home-layout/home-content/ho
         TuiSvgModule,
         TuiTooltipModule,
         TuiHintModule,
+        TuiLinkModule,
     ],
     providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
     bootstrap: [AppComponent],

@@ -1,7 +1,7 @@
 .about-me-grid {
     display: grid;
     grid-template-columns: 1fr 180px;
-    grid-template-rows: 1fr 32px;
+    grid-template-rows: 1fr 56px;
     gap: 32px;
 
     .about-me-text {
@@ -20,14 +20,9 @@
     }
 
     .about-me-contacts {
+        width: fit-content;
         display: grid;
-        grid-template-columns: repeat(2, 32px);
+        grid-template-columns: repeat(2, 1fr);
         gap: 12px;
-
-        img {
-            width: 32px;
-            height: 32px;
-            cursor: pointer;
-        }
     }
 }

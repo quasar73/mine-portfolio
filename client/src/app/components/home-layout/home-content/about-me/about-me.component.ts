@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { TuiNotificationsService } from '@taiga-ui/core';
+import { TuiNotification, TuiNotificationsService } from '@taiga-ui/core';
 
 @Component({
     selector: 'mbp-about-me',
@@ -19,6 +19,7 @@ export class AboutMeComponent {
         this.notificationsService
             .show(`${info} скопировано в буфер обмена.`, {
                 label: 'Скопировано!',
+                status: TuiNotification.Success,
             })
             .subscribe();
     }

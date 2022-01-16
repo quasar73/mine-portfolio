@@ -14,17 +14,7 @@
         alt="player"
     />
     <div class="about-me-contacts">
-        <img
-            src="../../../../../assets/svg/discord.svg"
-            alt="discord"
-            [tuiHint]="discord"
-            (click)="copy(discord)"
-        />
-        <img
-            src="../../../../../assets/svg/telegram.svg"
-            alt="telegram"
-            [tuiHint]="telegram"
-            (click)="copy(telegram)"
-        />
+        <a tuiLink (click)="copy(telegram)" [tuiHint]="telegram">Telegram</a>
+        <a tuiLink (click)="copy(discord)" [tuiHint]="discord">Discord</a>
     </div>
 </div>
