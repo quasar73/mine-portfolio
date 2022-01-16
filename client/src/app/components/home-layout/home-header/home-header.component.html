@@ -23,5 +23,17 @@
                 Мы построим, что вы хотите. Мы предложим, что вам надо.
             </div>
         </div>
+
+        <div class="scroll-down">
+            <button
+                [@floatingArrow]="arrowState"
+                (@floatingArrow.done)="arrowState = !arrowState"
+                tuiIconButton
+                type="button"
+                appearance="icon"
+                icon="tuiIconArrowDownLarge"
+                (click)="scrollClick.emit()"
+            ></button>
+        </div>
     </div>
 </div>

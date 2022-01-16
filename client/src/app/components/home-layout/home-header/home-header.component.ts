@@ -1,5 +1,11 @@
-import { animate, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
+import {
+    animate,
+    state,
+    style,
+    transition,
+    trigger,
+} from '@angular/animations';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
     selector: 'mbp-home-header',
@@ -34,8 +40,27 @@ import { Component } from '@angular/core';
                 ),
             ]),
         ]),
+        trigger('floatingArrow', [
+            state(
+                'true',
+                style({
+                    transform: 'translateY(-8px)',
+                }),
+            ),
+            state(
+                'false',
+                style({
+                    transform: 'translateY(8px)',
+                }),
+            ),
+            transition('*<=>*', animate('.7s')),
+        ]),
     ],
 })
 export class HomeHeaderComponent {
+    @Output() scrollClick = new EventEmitter();
+
+    arrowState = false;
+
     constructor() {}
 }
