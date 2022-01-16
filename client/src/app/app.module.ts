@@ -22,6 +22,7 @@ import { FeaturedWorkComponent } from './components/home-layout/home-content/fea
 import { TuiCarouselModule, TuiPaginationModule } from '@taiga-ui/kit';
 import { AboutMeComponent } from './components/home-layout/home-content/about-me/about-me.component';
 import { HomePageBlockComponent } from './components/home-layout/home-content/home-page-block/home-page-block.component';
+import { ContactMeComponent } from './components/home-layout/home-content/contact-me/contact-me.component';
 
 @NgModule({
     declarations: [
@@ -32,6 +33,7 @@ import { HomePageBlockComponent } from './components/home-layout/home-content/ho
         FeaturedWorkComponent,
         AboutMeComponent,
         HomePageBlockComponent,
+        ContactMeComponent,
     ],
     imports: [
         BrowserModule,
