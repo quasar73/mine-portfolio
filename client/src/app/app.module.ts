@@ -21,8 +21,10 @@ import { HomeContentComponent } from './components/home-layout/home-content/home
 import { FeaturedWorkComponent } from './components/home-layout/home-content/featured-work/featured-work.component';
 import {
     TuiCarouselModule,
+    TuiInputModule,
     TuiMarkerIconModule,
     TuiPaginationModule,
+    TuiTextAreaModule,
 } from '@taiga-ui/kit';
 import { AboutMeComponent } from './components/home-layout/home-content/about-me/about-me.component';
 import { HomePageBlockComponent } from './components/home-layout/home-content/home-page-block/home-page-block.component';
@@ -30,6 +32,7 @@ import { ContactMeComponent } from './components/home-layout/home-content/contac
 import { BaseLaytoutComponent } from './components/base-laytout/base-laytout.component';
 import { PortfolioPageComponent } from './components/portfolio-page/portfolio-page.component';
 import { BaseLayoutHeaderComponent } from './components/base-laytout/base-layout-header/base-layout-header.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -60,6 +63,9 @@ import { BaseLayoutHeaderComponent } from './components/base-laytout/base-layout
         TuiHintModule,
         TuiLinkModule,
         TuiMarkerIconModule,
+        TuiInputModule,
+        ReactiveFormsModule,
+        TuiTextAreaModule,
     ],
     providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
     bootstrap: [AppComponent],
