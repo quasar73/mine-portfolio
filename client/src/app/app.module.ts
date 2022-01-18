@@ -33,6 +33,7 @@ import { BaseLaytoutComponent } from './components/base-laytout/base-laytout.com
 import { PortfolioPageComponent } from './components/portfolio-page/portfolio-page.component';
 import { BaseLayoutHeaderComponent } from './components/base-laytout/base-layout-header/base-layout-header.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
     declarations: [
@@ -47,6 +48,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         BaseLaytoutComponent,
         PortfolioPageComponent,
         BaseLayoutHeaderComponent,
+        FooterComponent,
     ],
     imports: [
         BrowserModule,
