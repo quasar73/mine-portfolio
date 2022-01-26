@@ -1,4 +1,4 @@
-import { BaseLaytoutComponent } from './components/base-laytout/base-laytout.component';
+import { BaseLayoutComponent } from './components/base-layout/base-layout.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeLayoutComponent } from './components/home-layout/home-layout.component';
@@ -6,12 +6,12 @@ import { PortfolioPageComponent } from './components/portfolio-page/portfolio-pa
 
 const routes: Routes = [
     { path: 'home', component: HomeLayoutComponent },
+    { path: '', pathMatch: 'full', redirectTo: 'home' },
     {
         path: '',
-        component: BaseLaytoutComponent,
+        component: BaseLayoutComponent,
         children: [{ path: 'portfolio', component: PortfolioPageComponent }],
     },
-    { path: '', pathMatch: 'full', redirectTo: 'home' },
 ];
 
 @NgModule({

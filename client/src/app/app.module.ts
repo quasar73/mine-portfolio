@@ -29,9 +29,9 @@ import {
 import { AboutMeComponent } from './components/home-layout/home-content/about-me/about-me.component';
 import { HomePageBlockComponent } from './components/home-layout/home-content/home-page-block/home-page-block.component';
 import { ContactMeComponent } from './components/home-layout/home-content/contact-me/contact-me.component';
-import { BaseLaytoutComponent } from './components/base-laytout/base-laytout.component';
+import { BaseLayoutComponent } from './components/base-layout/base-layout.component';
 import { PortfolioPageComponent } from './components/portfolio-page/portfolio-page.component';
-import { BaseLayoutHeaderComponent } from './components/base-laytout/base-layout-header/base-layout-header.component';
+import { BaseLayoutHeaderComponent } from './components/base-layout/base-layout-header/base-layout-header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
 
@@ -45,7 +45,7 @@ import { FooterComponent } from './components/footer/footer.component';
         AboutMeComponent,
         HomePageBlockComponent,
         ContactMeComponent,
-        BaseLaytoutComponent,
+        BaseLayoutComponent,
         PortfolioPageComponent,
         BaseLayoutHeaderComponent,
         FooterComponent,
