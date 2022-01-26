@@ -22,6 +22,7 @@ import { FeaturedWorkComponent } from './components/home-layout/home-content/fea
 import {
     TuiCarouselModule,
     TuiInputModule,
+    TuiIslandModule,
     TuiMarkerIconModule,
     TuiPaginationModule,
     TuiTextAreaModule,
@@ -34,6 +35,7 @@ import { PortfolioPageComponent } from './components/portfolio-page/portfolio-pa
 import { BaseLayoutHeaderComponent } from './components/base-layout/base-layout-header/base-layout-header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
+import { WorkCardComponent } from './components/portfolio-page/work-card/work-card.component';
 
 @NgModule({
     declarations: [
@@ -49,6 +51,7 @@ import { FooterComponent } from './components/footer/footer.component';
         PortfolioPageComponent,
         BaseLayoutHeaderComponent,
         FooterComponent,
+        WorkCardComponent,
     ],
     imports: [
         BrowserModule,
@@ -68,6 +71,7 @@ import { FooterComponent } from './components/footer/footer.component';
         TuiInputModule,
         ReactiveFormsModule,
         TuiTextAreaModule,
+        TuiIslandModule,
     ],
     providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
     bootstrap: [AppComponent],
