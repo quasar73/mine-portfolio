@@ -1,3 +1,5 @@
+import { AuthModule } from './auth/auth.module';
+import { AuthController } from './controllers/auth.controller';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
@@ -6,8 +8,9 @@ import { ConfigModule } from '@nestjs/config';
         ConfigModule.forRoot({
             envFilePath: './env/.dev.env',
         }),
+        AuthModule,
     ],
-    controllers: [],
+    controllers: [AuthController],
     providers: [],
 })
 export class AppModule {}
