@@ -1,3 +1,4 @@
+import { MessageResponseDto } from './../shared/dto/message-response.dto';
 import { AddMessageDto } from './../shared/dto/add-message.dto';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -11,12 +12,17 @@ export class MessagesService {
         private messageRepository: Repository<Message>,
     ) {}
 
-    async addMessage(addMessageDto: AddMessageDto): Promise<Message> {
+    async addMessage(
+        addMessageDto: AddMessageDto,
+    ): Promise<MessageResponseDto> {
         const message = Message.create({
             ...addMessageDto,
         });
         await message.save();
 
-        return message;
+        return {
+            ...message,
+            id: message.id.toString(),
+        };
     }
 }

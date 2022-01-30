@@ -1,7 +1,8 @@
+import { MessageResponseDto } from './../shared/dto/message-response.dto';
 import { MessagesService } from './../messages/messages.service';
 import { AddMessageDto } from './../shared/dto/add-message.dto';
 import { JwtAuthGuard } from './../auth/guards/jwt.guard';
-import { ApiBody, ApiTags } from '@nestjs/swagger';
+import { ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Body, Controller, HttpCode, Post, UseGuards } from '@nestjs/common';
 
 @ApiTags('Messages')
@@ -10,7 +11,11 @@ export class MessagesController {
     constructor(private messagesService: MessagesService) {}
 
     @ApiBody({
-        type: [AddMessageDto],
+        type: AddMessageDto,
+    })
+    @ApiResponse({
+        type: MessageResponseDto,
+        status: 201,
     })
     @UseGuards(JwtAuthGuard)
     @HttpCode(201)

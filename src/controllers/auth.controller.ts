@@ -1,4 +1,4 @@
-import { ApiTags, ApiBody } from '@nestjs/swagger';
+import { ApiTags, ApiBody, ApiResponse } from '@nestjs/swagger';
 import { Controller, HttpCode, Post, UseGuards } from '@nestjs/common';
 import { AuthService } from 'src/auth/auth.service';
 import { LocalAuthGuard } from 'src/auth/guards/local.guard';
@@ -11,6 +11,11 @@ export class AuthController {
 
     @ApiBody({
         type: AuthDto,
+    })
+    @ApiResponse({
+        type: String,
+        status: 200,
+        description: 'Return JWT access token',
     })
     @UseGuards(LocalAuthGuard)
     @HttpCode(200)
