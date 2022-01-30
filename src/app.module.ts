@@ -1,7 +1,8 @@
 import { AuthModule } from './auth/auth.module';
-import { AuthController } from './controllers/auth.controller';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { DatabaseModule } from './database/database.module';
+import { MessagesModule } from './messages/messages.module';
 
 @Module({
     imports: [
@@ -9,8 +10,10 @@ import { ConfigModule } from '@nestjs/config';
             envFilePath: './env/.dev.env',
         }),
         AuthModule,
+        DatabaseModule,
+        MessagesModule,
     ],
-    controllers: [AuthController],
+    controllers: [],
     providers: [],
 })
 export class AppModule {}
