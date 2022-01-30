@@ -18,4 +18,7 @@ export class MessageResponseDto {
 
     @ApiProperty()
     seen: boolean;
+
+    @ApiProperty()
+    date: Date;
 }

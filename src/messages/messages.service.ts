@@ -17,6 +17,8 @@ export class MessagesService {
     ): Promise<MessageResponseDto> {
         const message = Message.create({
             ...addMessageDto,
+            seen: false,
+            date: new Date(),
         });
         await message.save();
 

@@ -23,4 +23,7 @@ export class Message extends BaseEntity {
         default: false,
     })
     seen: boolean;
+
+    @Column()
+    date: Date;
 }
