@@ -1,14 +1,21 @@
-import { ApiTags } from '@nestjs/swagger';
-import { Controller } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Message } from 'src/database/entities/message.entity';
+import { MessagesService } from './../messages/messages.service';
+import { AddMessageDto } from './../shared/dto/add-message.dto';
+import { JwtAuthGuard } from './../auth/guards/jwt.guard';
+import { ApiBody, ApiTags } from '@nestjs/swagger';
+import { Body, Controller, HttpCode, Post, UseGuards } from '@nestjs/common';
 
 @ApiTags('Messages')
 @Controller('messages')
 export class MessagesController {
-    constructor(
-        @InjectRepository(Message)
-        private messageRepository: Repository<Message>,
-    ) {}
+    constructor(private messagesService: MessagesService) {}
+
+    @ApiBody({
+        type: [AddMessageDto],
+    })
+    @UseGuards(JwtAuthGuard)
+    @HttpCode(201)
+    @Post()
+    async addMessage(@Body() addMessageDto: AddMessageDto) {
+        return await this.messagesService.addMessage(addMessageDto);
+    }
 }
