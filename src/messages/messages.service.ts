@@ -4,7 +4,7 @@ import { AddMessageDto } from './../shared/dto/add-message.dto';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Message } from 'src/database/entities/message.entity';
-import { Repository, ObjectID } from 'typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class MessagesService {
