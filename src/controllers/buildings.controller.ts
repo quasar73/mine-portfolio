@@ -72,6 +72,18 @@ export class BuildingsController {
     }
 
     @ApiResponse({
+        type: [BuildingsListDto],
+        status: 200,
+    })
+    @HttpCode(200)
+    @Get('featured')
+    async getFeaturedBuildins() {
+        const buildings =
+            await this.buildingsService.getFeaturedBuildingsList();
+        return buildings;
+    }
+
+    @ApiResponse({
         type: BuildingResponseDto,
         status: 200,
     })

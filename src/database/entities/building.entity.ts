@@ -11,6 +11,9 @@ export class Building extends BaseEntity {
     @Column()
     description: string;
 
+    @Column()
+    featured: boolean;
+
     @Column('string', { array: true })
     images: string[];
 }

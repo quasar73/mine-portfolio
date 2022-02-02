@@ -23,6 +23,7 @@ export class BuildingsService {
     ): Promise<BuildingResponseDto> {
         const building = Building.create({
             ...addBuildingDto,
+            featured: false,
             images: [...imagesPath],
         });
         await building.save();
@@ -74,5 +75,19 @@ export class BuildingsService {
             ...building,
             id: building.id.toHexString(),
         };
+    }
+
+    async getFeaturedBuildingsList(): Promise<BuildingsListDto[]> {
+        const buildings = await this.buildingsRepository.find({
+            featured: true,
+        });
+
+        return buildings.map((b) => {
+            return {
+                id: b.id.toHexString(),
+                title: b.title,
+                image: b.images[0],
+            };
+        });
     }
 }

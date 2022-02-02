@@ -11,5 +11,8 @@ export class BuildingResponseDto {
     description: string;
 
     @ApiProperty()
+    featured: boolean;
+
+    @ApiProperty()
     images: string[];
 }
