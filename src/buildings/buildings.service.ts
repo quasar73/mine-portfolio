@@ -67,4 +67,12 @@ export class BuildingsService {
 
         return imagesPath;
     }
+
+    async getBuildingById(id: string): Promise<BuildingResponseDto> {
+        const building = await this.buildingsRepository.findOne(id);
+        return {
+            ...building,
+            id: building.id.toHexString(),
+        };
+    }
 }

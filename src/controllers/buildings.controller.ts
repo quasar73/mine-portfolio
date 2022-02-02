@@ -7,6 +7,7 @@ import {
     Controller,
     Get,
     HttpCode,
+    Param,
     Post,
     UploadedFiles,
     UseGuards,
@@ -68,5 +69,16 @@ export class BuildingsController {
     async getBuildingsList() {
         const buildings = await this.buildingsService.getBuildingsList();
         return buildings;
+    }
+
+    @ApiResponse({
+        type: BuildingResponseDto,
+        status: 200,
+    })
+    @HttpCode(200)
+    @Get(':id')
+    async getBuilding(@Param('id') id: string) {
+        const building = await this.buildingsService.getBuildingById(id);
+        return building;
     }
 }
