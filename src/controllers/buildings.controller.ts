@@ -16,8 +16,6 @@ import { BuildingsService } from 'src/buildings/buildings.service';
 import { BuildingResponseDto } from 'src/shared/dto/building-response.dto';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import * as multerGoogleStorage from 'multer-google-storage';
-import { getDownloadURL, getStorage, ref } from '@firebase/storage';
-import { initializeApp } from '@firebase/app';
 
 @ApiTags('Buildings')
 @Controller('buildings')
