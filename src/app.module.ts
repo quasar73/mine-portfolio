@@ -9,6 +9,7 @@ import { BuildingsModule } from './buildings/buildings.module';
     imports: [
         ConfigModule.forRoot({
             envFilePath: './env/.dev.env',
+            isGlobal: true,
         }),
         AuthModule,
         DatabaseModule,

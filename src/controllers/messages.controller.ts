@@ -31,7 +31,8 @@ export class MessagesController {
     @HttpCode(201)
     @Post()
     async addMessage(@Body() addMessageDto: AddMessageDto) {
-        return await this.messagesService.addMessage(addMessageDto);
+        const message = await this.messagesService.addMessage(addMessageDto);
+        return message;
     }
 
     @ApiBearerAuth()
@@ -43,7 +44,8 @@ export class MessagesController {
     @HttpCode(200)
     @Get()
     async getMessages() {
-        return await this.messagesService.getMessages();
+        const messages = await this.messagesService.getMessages();
+        return messages;
     }
 
     @ApiBearerAuth()

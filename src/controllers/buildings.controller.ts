@@ -1,9 +1,11 @@
+import { BuildingsListDto } from './../shared/dto/buildings-list.dto';
 import { AddBuildingDto } from './../shared/dto/add-building.dto';
 import { JwtAuthGuard } from './../auth/guards/jwt.guard';
 import { ApiTags, ApiBody, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import {
     Body,
     Controller,
+    Get,
     HttpCode,
     Post,
     UploadedFiles,
@@ -14,6 +16,8 @@ import { BuildingsService } from 'src/buildings/buildings.service';
 import { BuildingResponseDto } from 'src/shared/dto/building-response.dto';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import * as multerGoogleStorage from 'multer-google-storage';
+import { getDownloadURL, getStorage, ref } from '@firebase/storage';
+import { initializeApp } from '@firebase/app';
 
 @ApiTags('Buildings')
 @Controller('buildings')
@@ -49,11 +53,22 @@ export class BuildingsController {
         @UploadedFiles() files: Express.Multer.File[],
         @Body() addBuildingDto: AddBuildingDto,
     ) {
-        const imagesPath = files.map((f) => f.path);
+        const imagesPath = await this.buildingsService.processImages(files);
         const building = await this.buildingsService.addBuilding(
             addBuildingDto,
             imagesPath,
         );
         return building;
+    }
+
+    @ApiResponse({
+        type: [BuildingsListDto],
+        status: 200,
+    })
+    @HttpCode(200)
+    @Get()
+    async getBuildingsList() {
+        const buildings = await this.buildingsService.getBuildingsList();
+        return buildings;
     }
 }
