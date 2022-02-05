@@ -15,11 +15,10 @@ import {
 } from '@nestjs/common';
 
 @ApiTags('Messages')
-@Controller('messages')
+@Controller('api/messages')
 export class MessagesController {
     constructor(private messagesService: MessagesService) {}
 
-    @ApiBearerAuth()
     @ApiBody({
         type: AddMessageDto,
     })
@@ -27,7 +26,6 @@ export class MessagesController {
         type: MessageResponseDto,
         status: 201,
     })
-    @UseGuards(JwtAuthGuard)
     @HttpCode(201)
     @Post()
     async addMessage(@Body() addMessageDto: AddMessageDto) {

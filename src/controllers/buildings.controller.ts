@@ -19,7 +19,7 @@ import { FilesInterceptor } from '@nestjs/platform-express';
 import * as multerGoogleStorage from 'multer-google-storage';
 
 @ApiTags('Buildings')
-@Controller('buildings')
+@Controller('api/buildings')
 export class BuildingsController {
     constructor(private buildingsService: BuildingsService) {}
 

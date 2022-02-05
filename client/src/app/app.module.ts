@@ -36,6 +36,7 @@ import { BaseLayoutHeaderComponent } from './components/base-layout/base-layout-
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
 import { WorkCardComponent } from './components/portfolio-page/work-card/work-card.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -72,6 +73,7 @@ import { WorkCardComponent } from './components/portfolio-page/work-card/work-ca
         ReactiveFormsModule,
         TuiTextAreaModule,
         TuiIslandModule,
+        HttpClientModule,
     ],
     providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
     bootstrap: [AppComponent],

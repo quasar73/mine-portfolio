@@ -19,7 +19,7 @@ export class AboutMeComponent {
         this.notificationsService
             .show(`${info} скопировано в буфер обмена.`, {
                 label: 'Скопировано!',
-                status: TuiNotification.Success,
+                status: TuiNotification.Info,
             })
             .subscribe();
     }

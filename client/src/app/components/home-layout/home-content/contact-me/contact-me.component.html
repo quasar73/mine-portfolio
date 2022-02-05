@@ -1,9 +1,21 @@
 <div class="wrap">
     <form [formGroup]="contactForm">
-        <tui-input formControlName="email"> Введите Email </tui-input>
-        <tui-input formControlName="telegram"> Введите Telegram </tui-input>
-        <tui-input formControlName="discord"> Введите Discord </tui-input>
-        <tui-text-area formControlName="message"> Type a text </tui-text-area>
-        <button tuiButton type="button" appearance="primary">Отправить</button>
+        <fieldset formGroupName="contacts">
+            <tui-input formControlName="email"> Введите Email </tui-input>
+            <tui-input formControlName="telegram"> Введите Telegram </tui-input>
+            <tui-input formControlName="discord"> Введите Discord </tui-input>
+        </fieldset>
+        <tui-text-area formControlName="message">
+            Введите сообщение
+        </tui-text-area>
+        <button
+            tuiButton
+            type="button"
+            appearance="primary"
+            [showLoader]="showLoader"
+            (click)="send()"
+        >
+            Отправить
+        </button>
     </form>
 </div>
