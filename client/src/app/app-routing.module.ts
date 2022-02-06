@@ -1,3 +1,5 @@
+import { AdminPageComponent } from './components/admin-page/admin-page.component';
+import { AuthPageComponent } from './components/auth-page/auth-page.component';
 import { BaseLayoutComponent } from './components/base-layout/base-layout.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -10,7 +12,11 @@ const routes: Routes = [
     {
         path: '',
         component: BaseLayoutComponent,
-        children: [{ path: 'portfolio', component: PortfolioPageComponent }],
+        children: [
+            { path: 'portfolio', component: PortfolioPageComponent },
+            { path: 'auth', component: AuthPageComponent },
+            { path: 'admin', component: AdminPageComponent },
+        ],
     },
 ];
 

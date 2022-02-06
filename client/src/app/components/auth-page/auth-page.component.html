@@ -1,0 +1,12 @@
+<div class="wrap">
+    <form [formGroup]="loginForm">
+        <tui-input formControlName="username"> Введите логин </tui-input>
+        <tui-input-password formControlName="password">
+            Введите пароль
+        </tui-input-password>
+
+        <button tuiButton type="button" appearance="primary" (click)="signIn()">
+            Войти
+        </button>
+    </form>
+</div>

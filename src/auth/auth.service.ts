@@ -20,7 +20,7 @@ export class AuthService {
 
     async login() {
         return {
-            access_token: this.jwtService.sign({}),
+            token: this.jwtService.sign({}),
         };
     }
 }

@@ -1,0 +1,16 @@
+.wrap {
+    height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    form {
+        width: 320px;
+        display: grid;
+        gap: 16px;
+
+        button {
+            width: 100%;
+        }
+    }
+}

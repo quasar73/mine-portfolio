@@ -1,3 +1,4 @@
+import { AuthenticationModule } from './shared/services/auth/authentication.module';
 import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
@@ -22,6 +23,7 @@ import { FeaturedWorkComponent } from './components/home-layout/home-content/fea
 import {
     TuiCarouselModule,
     TuiInputModule,
+    TuiInputPasswordModule,
     TuiIslandModule,
     TuiMarkerIconModule,
     TuiPaginationModule,
@@ -37,6 +39,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
 import { WorkCardComponent } from './components/portfolio-page/work-card/work-card.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthPageComponent } from './components/auth-page/auth-page.component';
+import { AdminPageComponent } from './components/admin-page/admin-page.component';
 
 @NgModule({
     declarations: [
@@ -53,12 +57,14 @@ import { HttpClientModule } from '@angular/common/http';
         BaseLayoutHeaderComponent,
         FooterComponent,
         WorkCardComponent,
+        AuthPageComponent,
+        AdminPageComponent,
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
-        TuiRootModule,
         BrowserAnimationsModule,
+        TuiRootModule,
         TuiDialogModule,
         TuiNotificationsModule,
         TuiButtonModule,
@@ -70,10 +76,12 @@ import { HttpClientModule } from '@angular/common/http';
         TuiLinkModule,
         TuiMarkerIconModule,
         TuiInputModule,
-        ReactiveFormsModule,
         TuiTextAreaModule,
         TuiIslandModule,
+        TuiInputPasswordModule,
+        ReactiveFormsModule,
         HttpClientModule,
+        AuthenticationModule,
     ],
     providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
     bootstrap: [AppComponent],
