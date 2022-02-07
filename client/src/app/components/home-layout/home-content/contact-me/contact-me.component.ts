@@ -10,6 +10,8 @@ import { AtLeastOneValidator } from 'src/app/shared/validators/at-least-one.vali
     styleUrls: ['./contact-me.component.scss'],
 })
 export class ContactMeComponent {
+    maxLength = 400;
+
     contactForm = new FormGroup({
         contacts: new FormGroup(
             {
@@ -19,7 +21,10 @@ export class ContactMeComponent {
             },
             { validators: [AtLeastOneValidator()] },
         ),
-        message: new FormControl('', Validators.required),
+        message: new FormControl('', [
+            Validators.required,
+            Validators.maxLength(this.maxLength),
+        ]),
     });
     showLoader = false;
 

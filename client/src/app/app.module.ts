@@ -11,6 +11,7 @@ import {
     TuiTooltipModule,
     TuiHintModule,
     TuiLinkModule,
+    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -79,6 +80,7 @@ import { AdminPageComponent } from './components/admin-page/admin-page.component
         TuiTextAreaModule,
         TuiIslandModule,
         TuiInputPasswordModule,
+        TuiTextfieldControllerModule,
         ReactiveFormsModule,
         HttpClientModule,
         AuthenticationModule,
