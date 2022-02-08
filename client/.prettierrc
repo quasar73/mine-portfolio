@@ -1,0 +1,7 @@
+{
+    "printWidth": 90,
+    "bracketSameLine": false,
+    "bracketSpacing": true,
+    "singleQuote": true,
+    "arrowParens": "always"
+}
