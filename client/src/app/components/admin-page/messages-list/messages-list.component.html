@@ -49,7 +49,14 @@
                     <div class="text">
                         {{ message.message }}
                     </div>
-                    <button tuiButton type="button" appearance="secondary">
+                    <button
+                        tuiButton
+                        type="button"
+                        appearance="secondary"
+                        [showLoader]="updating"
+                        [disabled]="updating"
+                        (click)="onReadClick(message)"
+                    >
                         {{ message.seen ? 'Не прочитано' : 'Прочитано' }}
                     </button>
 
@@ -58,6 +65,7 @@
                         type="button"
                         appearance="accent"
                         class="tui-space_left-3"
+                        [disabled]="updating"
                     >
                         Удалить
                     </button>

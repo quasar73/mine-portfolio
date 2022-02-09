@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class MessagesListComponent implements OnInit {
     toggleControl = new FormControl(false);
     messages: GetMessageDto[] = [];
+    updating = false;
 
     constructor(private messagesService: MessagesService) {}
 
@@ -34,5 +35,17 @@ export class MessagesListComponent implements OnInit {
     getDate(dateStr: string): string {
         const date = new Date(dateStr);
         return date.toLocaleDateString('ru-RU');
+    }
+
+    onReadClick(message: GetMessageDto): void {
+        const update = {
+            id: message.id,
+            seen: !message.seen,
+        };
+        this.updating = true;
+        this.messagesService.updateMessage(update).subscribe(() => {
+            message.seen = !message.seen;
+            this.updating = false;
+        });
     }
 }

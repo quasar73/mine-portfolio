@@ -40,11 +40,11 @@ export class MessagesController {
         return message;
     }
 
+    @ApiBearerAuth()
     @ApiQuery({
         name: 'onlyUnreaded',
         type: Boolean,
     })
-    @ApiBearerAuth()
     @ApiResponse({
         type: [MessageResponseDto],
         status: 200,
@@ -58,8 +58,10 @@ export class MessagesController {
     }
 
     @ApiBearerAuth()
-    @ApiResponse({
+    @ApiBody({
         type: UpdateMessageDto,
+    })
+    @ApiResponse({
         status: 200,
     })
     @UseGuards(JwtAuthGuard)
@@ -67,6 +69,6 @@ export class MessagesController {
     @Put()
     async updateMessage(@Body() updateMessageDto: UpdateMessageDto) {
         await this.messagesService.updateMessage(updateMessageDto);
-        return 'Successfully updated';
+        return;
     }
 }
