@@ -29,10 +29,18 @@ export class MessagesService {
         };
     }
 
-    async getMessages(): Promise<MessageResponseDto[]> {
-        return (await this.messageRepository.find()).map((m) => {
-            return { ...m, id: m.id.toHexString() };
-        });
+    async getMessages(onlyUnreaded: boolean): Promise<MessageResponseDto[]> {
+        return (
+            onlyUnreaded
+                ? await this.messageRepository.find({ seen: false })
+                : await this.messageRepository.find()
+        )
+            .sort((a: Message, b: Message) => {
+                return b.date.getTime() - a.date.getTime();
+            })
+            .map((m) => {
+                return { ...m, id: m.id.toHexString() };
+            });
     }
 
     async updateMessage(updateMessageDto: UpdateMessageDto): Promise<void> {

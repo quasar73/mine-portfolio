@@ -3,7 +3,13 @@ import { MessageResponseDto } from './../shared/dto/message-response.dto';
 import { MessagesService } from './../messages/messages.service';
 import { AddMessageDto } from './../shared/dto/add-message.dto';
 import { JwtAuthGuard } from './../auth/guards/jwt.guard';
-import { ApiBearerAuth, ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+    ApiBearerAuth,
+    ApiBody,
+    ApiQuery,
+    ApiResponse,
+    ApiTags,
+} from '@nestjs/swagger';
 import {
     Body,
     Controller,
@@ -11,6 +17,7 @@ import {
     HttpCode,
     Post,
     Put,
+    Query,
     UseGuards,
 } from '@nestjs/common';
 
@@ -33,6 +40,10 @@ export class MessagesController {
         return message;
     }
 
+    @ApiQuery({
+        name: 'onlyUnreaded',
+        type: Boolean,
+    })
     @ApiBearerAuth()
     @ApiResponse({
         type: [MessageResponseDto],
@@ -41,8 +52,8 @@ export class MessagesController {
     @UseGuards(JwtAuthGuard)
     @HttpCode(200)
     @Get()
-    async getMessages() {
-        const messages = await this.messagesService.getMessages();
+    async getMessages(@Query('onlyUnreaded') onlyUnreaded: boolean) {
+        const messages = await this.messagesService.getMessages(onlyUnreaded);
         return messages;
     }
 

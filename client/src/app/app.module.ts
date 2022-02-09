@@ -22,13 +22,16 @@ import { HomeHeaderComponent } from './components/home-layout/home-header/home-h
 import { HomeContentComponent } from './components/home-layout/home-content/home-content.component';
 import { FeaturedWorkComponent } from './components/home-layout/home-content/featured-work/featured-work.component';
 import {
+    TuiAccordionModule,
     TuiCarouselModule,
     TuiInputModule,
     TuiInputPasswordModule,
     TuiIslandModule,
     TuiMarkerIconModule,
     TuiPaginationModule,
+    TuiTabsModule,
     TuiTextAreaModule,
+    TuiToggleModule,
 } from '@taiga-ui/kit';
 import { AboutMeComponent } from './components/home-layout/home-content/about-me/about-me.component';
 import { HomePageBlockComponent } from './components/home-layout/home-content/home-page-block/home-page-block.component';
@@ -42,6 +45,7 @@ import { WorkCardComponent } from './components/portfolio-page/work-card/work-ca
 import { HttpClientModule } from '@angular/common/http';
 import { AuthPageComponent } from './components/auth-page/auth-page.component';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
+import { MessagesListComponent } from './components/admin-page/messages-list/messages-list.component';
 
 @NgModule({
     declarations: [
@@ -60,6 +64,7 @@ import { AdminPageComponent } from './components/admin-page/admin-page.component
         WorkCardComponent,
         AuthPageComponent,
         AdminPageComponent,
+        MessagesListComponent,
     ],
     imports: [
         BrowserModule,
@@ -81,6 +86,9 @@ import { AdminPageComponent } from './components/admin-page/admin-page.component
         TuiIslandModule,
         TuiInputPasswordModule,
         TuiTextfieldControllerModule,
+        TuiTabsModule,
+        TuiAccordionModule,
+        TuiToggleModule,
         ReactiveFormsModule,
         HttpClientModule,
         AuthenticationModule,

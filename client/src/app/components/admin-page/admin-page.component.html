@@ -1,1 +1,22 @@
-<p>admin-page works!</p>
+<div class="wrap">
+    <div class="content">
+        <tui-tabs [(activeItemIndex)]="activeItemIndex">
+            <button
+                *ngFor="let tab of tabs"
+                tuiTab
+                (click)="redirect(tab.path)"
+            >
+                <tui-svg class="tui-space_right-1" [src]="tab.icon"></tui-svg>
+                {{ tab.title }}
+            </button>
+        </tui-tabs>
+        <div class="tab-content">
+            <div class="tui-text_h3 title">
+                {{ tabs[activeItemIndex].title }}
+            </div>
+            <div class="list">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

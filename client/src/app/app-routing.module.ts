@@ -1,3 +1,4 @@
+import { MessagesListComponent } from './components/admin-page/messages-list/messages-list.component';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
 import { AuthPageComponent } from './components/auth-page/auth-page.component';
 import { BaseLayoutComponent } from './components/base-layout/base-layout.component';
@@ -15,7 +16,20 @@ const routes: Routes = [
         children: [
             { path: 'portfolio', component: PortfolioPageComponent },
             { path: 'auth', component: AuthPageComponent },
-            { path: 'admin', component: AdminPageComponent },
+            {
+                path: 'admin',
+                component: AdminPageComponent,
+                children: [
+                    {
+                        path: 'messages',
+                        component: MessagesListComponent,
+                    },
+                    {
+                        path: 'works',
+                        component: MessagesListComponent,
+                    },
+                ],
+            },
         ],
     },
 ];

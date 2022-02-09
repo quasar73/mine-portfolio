@@ -1,0 +1,68 @@
+<div class="wrap">
+    <div class="toggle">
+        <tui-toggle
+            [showIcons]="true"
+            size="l"
+            [formControl]="toggleControl"
+        ></tui-toggle>
+        <span class="tui-text_body-l tui-space_left-3"> Только не прочитанные </span>
+    </div>
+
+    <tui-accordion class="container">
+        <tui-accordion-item *ngFor="let message of messages">
+            <div class="message-header">
+                <tui-marker-icon
+                    *ngIf="!message.seen; else seen"
+                    mode="primary"
+                    src="tuiIconBell"
+                    class="tui-space_right-2"
+                ></tui-marker-icon>
+                <ng-template #seen>
+                    <tui-marker-icon
+                        src="tuiIconEyeOpen"
+                        class="tui-space_right-2"
+                    ></tui-marker-icon>
+                </ng-template>
+
+                <span class="contacts-text tui-text_body-l-2">
+                    {{ getTitleString(message) }}
+                </span>
+
+                <span class="date"> {{ getDate(message.date) }} </span>
+            </div>
+            <ng-template tuiAccordionItemContent>
+                <div class="message-body">
+                    <div class="contacts">
+                        <a tuiLink tuiHint="Копировать" *ngIf="message?.email?.length">
+                            {{ message.email }}
+                        </a>
+                        <a tuiLink tuiHint="Копировать" *ngIf="message?.telegram?.length">
+                            {{ message.telegram }}
+                        </a>
+                        <a tuiLink tuiHint="Копировать" *ngIf="message?.discord?.length">
+                            {{ message.discord }}
+                        </a>
+                    </div>
+
+                    <div class="tui-text_h5 tui-space_bottom-2">Текст</div>
+
+                    <div class="text">
+                        {{ message.message }}
+                    </div>
+                    <button tuiButton type="button" appearance="secondary">
+                        {{ message.seen ? 'Не прочитано' : 'Прочитано' }}
+                    </button>
+
+                    <button
+                        tuiButton
+                        type="button"
+                        appearance="accent"
+                        class="tui-space_left-3"
+                    >
+                        Удалить
+                    </button>
+                </div>
+            </ng-template>
+        </tui-accordion-item>
+    </tui-accordion>
+</div>

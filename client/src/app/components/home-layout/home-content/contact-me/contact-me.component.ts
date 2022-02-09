@@ -19,7 +19,7 @@ export class ContactMeComponent {
                 telegram: new FormControl(''),
                 discord: new FormControl(''),
             },
-            { validators: [AtLeastOneValidator()] },
+            { validators: [AtLeastOneValidator()] }
         ),
         message: new FormControl('', [
             Validators.required,
@@ -31,7 +31,7 @@ export class ContactMeComponent {
     constructor(
         @Inject(TuiNotificationsService)
         private readonly notificationsService: TuiNotificationsService,
-        private messagesService: MessagesService,
+        private messagesService: MessagesService
     ) {}
 
     send(): void {
@@ -42,7 +42,7 @@ export class ContactMeComponent {
                     {
                         label: 'Форма не валидна!',
                         status: TuiNotification.Warning,
-                    },
+                    }
                 )
                 .subscribe();
         } else {
@@ -50,10 +50,8 @@ export class ContactMeComponent {
             const dto = {
                 message: this.contactForm.get('message')?.value,
                 email: this.contactForm.get('contacts')?.get('email')?.value,
-                telegram: this.contactForm.get('contacts')?.get('telegram')
-                    ?.value,
-                discord: this.contactForm.get('contacts')?.get('discord')
-                    ?.value,
+                telegram: this.contactForm.get('contacts')?.get('telegram')?.value,
+                discord: this.contactForm.get('contacts')?.get('discord')?.value,
             };
 
             this.messagesService.addMessage(dto).subscribe(() => {
@@ -64,6 +62,7 @@ export class ContactMeComponent {
                     })
                     .subscribe();
                 this.showLoader = false;
+                this.contactForm.reset();
             });
         }
     }

@@ -1,0 +1,17 @@
+.wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+
+    .content {
+        width: 50%;
+
+        .title {
+            margin-top: 16px;
+        }
+
+        .list {
+            margin-top: 16px;
+        }
+    }
+}
