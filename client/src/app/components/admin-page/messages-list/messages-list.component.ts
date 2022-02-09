@@ -1,7 +1,8 @@
 import { GetMessageDto } from './../../../shared/dto/get-message.dto';
 import { MessagesService } from 'src/app/shared/services/messages/messages.service';
 import { FormControl } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { TuiNotification, TuiNotificationsService } from '@taiga-ui/core';
 
 @Component({
     selector: 'mbp-messages-list',
@@ -13,7 +14,11 @@ export class MessagesListComponent implements OnInit {
     messages: GetMessageDto[] = [];
     updating = false;
 
-    constructor(private messagesService: MessagesService) {}
+    constructor(
+        private messagesService: MessagesService,
+        @Inject(TuiNotificationsService)
+        private readonly notificationsService: TuiNotificationsService
+    ) {}
 
     ngOnInit(): void {
         this.toggleControl.valueChanges.subscribe((value) => this.getMessages(value));
@@ -27,9 +32,7 @@ export class MessagesListComponent implements OnInit {
     }
 
     getTitleString(message: GetMessageDto): string {
-        return [message?.email, message?.telegram, message?.discord]
-            .filter((c) => c?.length)
-            .join(' • ');
+        return this.getArrayOfContacts(message).join(' • ');
     }
 
     getDate(dateStr: string): string {
@@ -47,5 +50,21 @@ export class MessagesListComponent implements OnInit {
             message.seen = !message.seen;
             this.updating = false;
         });
+    }
+
+    getArrayOfContacts(message: GetMessageDto): string[] {
+        return [message?.email, message?.telegram, message?.discord].filter(
+            (c) => c?.length
+        );
+    }
+
+    copy(info: string): void {
+        navigator.clipboard.writeText(info);
+        this.notificationsService
+            .show(`${info} скопировано в буфер обмена.`, {
+                label: 'Скопировано!',
+                status: TuiNotification.Info,
+            })
+            .subscribe();
     }
 }

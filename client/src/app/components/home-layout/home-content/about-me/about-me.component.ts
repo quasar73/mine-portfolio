@@ -12,10 +12,11 @@ export class AboutMeComponent {
 
     constructor(
         @Inject(TuiNotificationsService)
-        private readonly notificationsService: TuiNotificationsService,
+        private readonly notificationsService: TuiNotificationsService
     ) {}
 
     copy(info: string): void {
+        navigator.clipboard.writeText(info);
         this.notificationsService
             .show(`${info} скопировано в буфер обмена.`, {
                 label: 'Скопировано!',

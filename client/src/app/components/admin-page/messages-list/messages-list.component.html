@@ -33,14 +33,13 @@
             <ng-template tuiAccordionItemContent>
                 <div class="message-body">
                     <div class="contacts">
-                        <a tuiLink tuiHint="Копировать" *ngIf="message?.email?.length">
-                            {{ message.email }}
-                        </a>
-                        <a tuiLink tuiHint="Копировать" *ngIf="message?.telegram?.length">
-                            {{ message.telegram }}
-                        </a>
-                        <a tuiLink tuiHint="Копировать" *ngIf="message?.discord?.length">
-                            {{ message.discord }}
+                        <a
+                            tuiLink
+                            tuiHint="Копировать"
+                            *ngFor="let contact of getArrayOfContacts(message)"
+                            (click)="copy(contact)"
+                        >
+                            {{ contact }}
                         </a>
                     </div>
 
