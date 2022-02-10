@@ -13,8 +13,10 @@ import {
 import {
     Body,
     Controller,
+    Delete,
     Get,
     HttpCode,
+    Param,
     Post,
     Put,
     Query,
@@ -69,6 +71,18 @@ export class MessagesController {
     @Put()
     async updateMessage(@Body() updateMessageDto: UpdateMessageDto) {
         await this.messagesService.updateMessage(updateMessageDto);
+        return;
+    }
+
+    @ApiBearerAuth()
+    @ApiResponse({
+        status: 200,
+    })
+    @UseGuards(JwtAuthGuard)
+    @HttpCode(200)
+    @Delete(':id')
+    async deleteMessage(@Param('id') id: string) {
+        await this.messagesService.deleteMessage(id);
         return;
     }
 }

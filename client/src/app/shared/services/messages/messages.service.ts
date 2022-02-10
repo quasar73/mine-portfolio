@@ -22,4 +22,8 @@ export class MessagesService {
     ): Observable<UpdateMessageDto | null> {
         return this.base.put<UpdateMessageDto>('messages', updateMessageDto);
     }
+
+    deleteMessage(id: string): Observable<any> {
+        return this.base.delete<any>(`messages/${id}`);
+    }
 }

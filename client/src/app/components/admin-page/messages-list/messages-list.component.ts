@@ -52,6 +52,21 @@ export class MessagesListComponent implements OnInit {
         });
     }
 
+    onDeleteClick(message: GetMessageDto): void {
+        this.updating = true;
+        this.messagesService.deleteMessage(message.id).subscribe(() => {
+            this.updating = false;
+            this.notificationsService
+                .show('', {
+                    label: 'Сообщение удалено',
+                    status: TuiNotification.Info,
+                })
+                .subscribe();
+            const index = this.messages.indexOf(message);
+            this.messages.splice(index, 1);
+        });
+    }
+
     getArrayOfContacts(message: GetMessageDto): string[] {
         return [message?.email, message?.telegram, message?.discord].filter(
             (c) => c?.length
