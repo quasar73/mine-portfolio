@@ -28,6 +28,10 @@ const routes: Routes = [
                         path: 'works',
                         component: MessagesListComponent,
                     },
+                    {
+                        path: 'settings',
+                        component: MessagesListComponent,
+                    },
                 ],
             },
         ],

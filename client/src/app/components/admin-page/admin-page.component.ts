@@ -34,6 +34,11 @@ export class AdminPageComponent {
             icon: 'tuiIconPicture',
             path: 'works',
         },
+        {
+            title: 'Настройки',
+            icon: 'tuiIconSettings',
+            path: 'settings',
+        },
     ];
     activeItemIndex = 0;
 
