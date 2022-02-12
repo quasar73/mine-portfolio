@@ -1,3 +1,4 @@
+import { WorksListComponent } from './components/admin-page/works-list/works-list.component';
 import { MessagesListComponent } from './components/admin-page/messages-list/messages-list.component';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
 import { AuthPageComponent } from './components/auth-page/auth-page.component';
@@ -26,7 +27,7 @@ const routes: Routes = [
                     },
                     {
                         path: 'works',
-                        component: MessagesListComponent,
+                        component: WorksListComponent,
                     },
                     {
                         path: 'settings',

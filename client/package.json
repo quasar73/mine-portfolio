@@ -29,6 +29,7 @@
         "@taiga-ui/icons": "^2.29.0",
         "@taiga-ui/kit": "^2.29.0",
         "@tinkoff/ng-dompurify": "3.0.0",
+        "browser-image-compression": "^1.0.17",
         "dompurify": "2.2.9",
         "husky": "^7.0.4",
         "ngx-auth": "^5.4.0",

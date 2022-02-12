@@ -24,11 +24,14 @@ import { FeaturedWorkComponent } from './components/home-layout/home-content/fea
 import {
     TuiAccordionModule,
     TuiCarouselModule,
+    TuiInputFileModule,
     TuiInputModule,
     TuiInputPasswordModule,
     TuiIslandModule,
     TuiMarkerIconModule,
     TuiPaginationModule,
+    TuiProgressModule,
+    TuiStepperModule,
     TuiTabsModule,
     TuiTextAreaModule,
     TuiToggleModule,
@@ -39,13 +42,16 @@ import { ContactMeComponent } from './components/home-layout/home-content/contac
 import { BaseLayoutComponent } from './components/base-layout/base-layout.component';
 import { PortfolioPageComponent } from './components/portfolio-page/portfolio-page.component';
 import { BaseLayoutHeaderComponent } from './components/base-layout/base-layout-header/base-layout-header.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
 import { WorkCardComponent } from './components/portfolio-page/work-card/work-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthPageComponent } from './components/auth-page/auth-page.component';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
 import { MessagesListComponent } from './components/admin-page/messages-list/messages-list.component';
+import { WorksListComponent } from './components/admin-page/works-list/works-list.component';
+import { AddWorkDialogComponent } from './components/admin-page/works-list/add-work-dialog/add-work-dialog.component';
+import { AddWorkDialogHeaderComponent } from './components/admin-page/works-list/add-work-dialog/add-work-dialog-header/add-work-dialog-header.component';
 
 @NgModule({
     declarations: [
@@ -65,6 +71,9 @@ import { MessagesListComponent } from './components/admin-page/messages-list/mes
         AuthPageComponent,
         AdminPageComponent,
         MessagesListComponent,
+        WorksListComponent,
+        AddWorkDialogComponent,
+        AddWorkDialogHeaderComponent,
     ],
     imports: [
         BrowserModule,
@@ -89,9 +98,13 @@ import { MessagesListComponent } from './components/admin-page/messages-list/mes
         TuiTabsModule,
         TuiAccordionModule,
         TuiToggleModule,
+        TuiStepperModule,
+        TuiInputFileModule,
+        TuiProgressModule,
         ReactiveFormsModule,
         HttpClientModule,
         AuthenticationModule,
+        FormsModule,
     ],
     providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
     bootstrap: [AppComponent],

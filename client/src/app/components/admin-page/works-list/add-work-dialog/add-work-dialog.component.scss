@@ -1,0 +1,27 @@
+.wrap {
+    .stepper {
+        display: flex;
+        justify-content: center;
+    }
+
+    .content {
+        max-height: 50vh;
+        overflow-y: auto;
+        margin-top: 24px;
+        padding: 4px;
+
+        tui-input {
+            margin-bottom: 8px;
+        }
+
+        tui-text-area {
+            text-align: left;
+        }
+    }
+
+    .buttons {
+        margin-top: 12px;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
