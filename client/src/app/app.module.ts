@@ -52,6 +52,7 @@ import { MessagesListComponent } from './components/admin-page/messages-list/mes
 import { WorksListComponent } from './components/admin-page/works-list/works-list.component';
 import { AddWorkDialogComponent } from './components/admin-page/works-list/add-work-dialog/add-work-dialog.component';
 import { AddWorkDialogHeaderComponent } from './components/admin-page/works-list/add-work-dialog/add-work-dialog-header/add-work-dialog-header.component';
+import { BuildingPageComponent } from './components/building-page/building-page.component';
 
 @NgModule({
     declarations: [
@@ -74,6 +75,7 @@ import { AddWorkDialogHeaderComponent } from './components/admin-page/works-list
         WorksListComponent,
         AddWorkDialogComponent,
         AddWorkDialogHeaderComponent,
+        BuildingPageComponent,
     ],
     imports: [
         BrowserModule,

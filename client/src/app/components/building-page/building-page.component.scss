@@ -1,0 +1,49 @@
+.wrap {
+    display: flex;
+    justify-content: center;
+
+    .content {
+        width: 60%;
+
+        .title {
+            display: flex;
+            align-items: center;
+        }
+
+        .desc-title {
+            margin-bottom: 32px;
+            margin-top: 64px;
+        }
+
+        .carousel {
+            margin-top: 64px;
+            display: flex;
+            align-items: center;
+
+            .carousel-content {
+                margin-bottom: 8px;
+                display: flex;
+                justify-content: center;
+
+                .carousel-image-wrap {
+                    width: 1000px;
+                    height: 500px;
+                    border-radius: 16px;
+                    overflow: hidden;
+
+                    img {
+                        height: 100%;
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                .image-name {
+                    margin-top: 16px;
+                    font-size: 24pt;
+                    line-height: 24pt;
+                }
+            }
+        }
+    }
+}

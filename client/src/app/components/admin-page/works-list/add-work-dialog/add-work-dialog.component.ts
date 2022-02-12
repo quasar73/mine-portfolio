@@ -59,7 +59,7 @@ export class AddWorkDialogComponent {
         this.progressText = 'Загрузка на сервер';
         this.cdr.detectChanges();
 
-        this.buildingsService.addWork(dto).subscribe(() => {
+        this.buildingsService.addBuilding(dto).subscribe(() => {
             this.notificationsService
                 .show('', {
                     label: 'Работа загружена успешно!',

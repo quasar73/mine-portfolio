@@ -1,0 +1,44 @@
+<div class="wrap">
+    <div class="content">
+        <div class="title tui-text_h2">
+            {{ building?.title }}
+            <tui-marker-icon
+                *ngIf="building?.featured"
+                mode="warning"
+                size="s"
+                src="tuiIconStarFilledLarge"
+                class="tui-space_left-3"
+                tuiHint="Избранная работа"
+            ></tui-marker-icon>
+        </div>
+
+        <div tuiCarouselButtons class="carousel">
+            <button
+                tuiIconButton
+                icon="tuiIconChevronLeftLarge"
+                title="Previous"
+                (click)="carousel.prev()"
+            ></button>
+            <tui-carousel #carousel [(index)]="index">
+                <ng-container *ngFor="let image of building?.images">
+                    <div class="carousel-content" *tuiItem>
+                        <div class="carousel-image-wrap">
+                            <img [src]="image" alt="carousel-image" />
+                        </div>
+                    </div>
+                </ng-container>
+            </tui-carousel>
+            <button
+                tuiIconButton
+                icon="tuiIconChevronRightLarge"
+                title="Next"
+                (click)="carousel.next()"
+            ></button>
+        </div>
+
+        <div class="desc-title tui-text_h3">Описание</div>
+        <div class="description tui-text_body-xl">
+            {{ building?.description }}
+        </div>
+    </div>
+</div>
