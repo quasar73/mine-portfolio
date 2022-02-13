@@ -1,5 +1,14 @@
 <div class="wrap">
     <div class="content">
+        <div class="breadcrumbs">
+            <tui-breadcrumbs size="l" class="tui-space_top-2">
+                <ng-container *ngFor="let item of items">
+                    <a *tuiBreadcrumb tuiLink [routerLink]="item.link">
+                        {{ item.title }}
+                    </a>
+                </ng-container>
+            </tui-breadcrumbs>
+        </div>
         <div class="title tui-text_h2">
             {{ building?.title }}
             <tui-marker-icon

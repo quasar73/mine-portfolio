@@ -23,6 +23,7 @@ import { HomeContentComponent } from './components/home-layout/home-content/home
 import { FeaturedWorkComponent } from './components/home-layout/home-content/featured-work/featured-work.component';
 import {
     TuiAccordionModule,
+    TuiBreadcrumbsModule,
     TuiCarouselModule,
     TuiCheckboxLabeledModule,
     TuiInputFileModule,
@@ -105,6 +106,7 @@ import { BuildingPageComponent } from './components/building-page/building-page.
         TuiInputFileModule,
         TuiProgressModule,
         TuiCheckboxLabeledModule,
+        TuiBreadcrumbsModule,
         ReactiveFormsModule,
         HttpClientModule,
         AuthenticationModule,
