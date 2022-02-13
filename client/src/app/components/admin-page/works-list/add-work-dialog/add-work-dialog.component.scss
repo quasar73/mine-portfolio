@@ -17,6 +17,20 @@
         tui-text-area {
             text-align: left;
         }
+
+        .featured-wrap {
+            margin-top: 12px;
+            display: flex;
+            justify-content: flex-start;
+
+            tui-checkbox-labeled {
+                text-align: left;
+
+                .example {
+                    color: var(--tui-text-03);
+                }
+            }
+        }
     }
 
     .buttons {

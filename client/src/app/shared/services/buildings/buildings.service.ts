@@ -12,6 +12,7 @@ export class BuildingsService {
         const form = new FormData();
         form.append('title', dto.title);
         form.append('description', dto.description);
+        form.append('featured', `${dto.featured}`);
         dto.files.forEach((file) => {
             form.append('files', file);
         });

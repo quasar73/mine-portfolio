@@ -20,6 +20,7 @@ export class AddWorkDialogComponent {
     addWorkForm = new FormGroup({
         title: new FormControl('', [Validators.required, Validators.minLength(2)]),
         description: new FormControl('', Validators.required),
+        featured: new FormControl(false),
     });
     files: File[] = [];
     progressText = '';

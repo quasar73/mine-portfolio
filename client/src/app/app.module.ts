@@ -24,6 +24,7 @@ import { FeaturedWorkComponent } from './components/home-layout/home-content/fea
 import {
     TuiAccordionModule,
     TuiCarouselModule,
+    TuiCheckboxLabeledModule,
     TuiInputFileModule,
     TuiInputModule,
     TuiInputPasswordModule,
@@ -103,6 +104,7 @@ import { BuildingPageComponent } from './components/building-page/building-page.
         TuiStepperModule,
         TuiInputFileModule,
         TuiProgressModule,
+        TuiCheckboxLabeledModule,
         ReactiveFormsModule,
         HttpClientModule,
         AuthenticationModule,

@@ -21,9 +21,10 @@ export class BuildingsService {
         addBuildingDto: AddBuildingDto,
         imagesPath: string[],
     ): Promise<BuildingResponseDto> {
+        console.log(addBuildingDto);
         const building = Building.create({
             ...addBuildingDto,
-            featured: false,
+            featured: addBuildingDto.featured === 'true',
             images: [...imagesPath],
         });
         await building.save();

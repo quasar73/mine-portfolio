@@ -9,4 +9,7 @@ export class AddBuildingDto {
 
     @ApiProperty()
     description: string;
+
+    @ApiProperty()
+    featured: string;
 }
