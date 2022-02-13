@@ -6,16 +6,19 @@
         (click)="carousel.prev()"
     ></button>
     <tui-carousel #carousel [duration]="5000" [(index)]="index">
-        <ng-container *ngFor="let name of names">
+        <ng-container *ngFor="let building of buildings">
             <div class="carousel-content" *tuiItem>
                 <div class="carousel-image-wrap">
-                    <img
-                        src="../../../../../assets/images/header-background.jpg"
-                        alt="carousel-image"
-                    />
+                    <img [src]="building.image" alt="carousel-image" />
                 </div>
                 <div class="image-name">
-                    {{ name }}
+                    {{ building.title }}
+                    <a
+                        tuiLink
+                        icon="tuiIconRedoLarge"
+                        class="tui-space_left-1"
+                        [routerLink]="'../building/' + building.id"
+                    ></a>
                 </div>
             </div>
         </ng-container>
