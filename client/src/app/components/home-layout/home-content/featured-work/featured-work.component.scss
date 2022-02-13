@@ -29,3 +29,13 @@
         }
     }
 }
+
+@media only screen and (min-width: 2400px) {
+    .carousel {
+        .carousel-content {
+            .carousel-image-wrap {
+                height: 500px;
+            }
+        }
+    }
+}

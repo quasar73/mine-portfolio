@@ -47,3 +47,19 @@
         }
     }
 }
+
+@media only screen and (min-width: 2400px) {
+    .wrap {
+        .content {
+            .carousel {
+                .carousel-content {
+                    .carousel-image-wrap {
+                        width: 1300px;
+                        height: 650px;
+                        border-radius: 24px;
+                    }
+                }
+            }
+        }
+    }
+}
