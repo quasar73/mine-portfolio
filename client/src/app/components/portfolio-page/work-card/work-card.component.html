@@ -1,6 +1,25 @@
 <div class="wrap">
-    <div class="overlap">
-        <div class="work-title">Ship build</div>
-    </div>
-    <img class="image" src="../../../../assets/images/header-background.jpg" />
+    <a
+        tuiIsland
+        [routerLink]="'../building/' + building.id"
+        size="l"
+        target="_blank"
+        [hoverable]="true"
+        class="island"
+    >
+        <img alt="building image" class="image" [src]="building?.image" />
+        <div class="content">
+            <div class="title">
+                <h1 class="tui-text_h4">{{ building?.title }}</h1>
+                <tui-marker-icon
+                    *ngIf="building?.featured"
+                    mode="warning"
+                    size="xs"
+                    src="tuiIconStarFilledLarge"
+                    class="tui-space_left-3"
+                    tuiHint="Избранная работа"
+                ></tui-marker-icon>
+            </div>
+        </div>
+    </a>
 </div>

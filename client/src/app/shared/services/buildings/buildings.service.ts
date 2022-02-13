@@ -27,4 +27,8 @@ export class BuildingsService {
     getFeaturedBuildings(): Observable<GetBuildingsDto[] | null> {
         return this.base.get<GetBuildingsDto[]>('buildings/featured');
     }
+
+    getBuildings(): Observable<GetBuildingsDto[] | null> {
+        return this.base.get<GetBuildingsDto[]>('buildings');
+    }
 }

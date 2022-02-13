@@ -42,6 +42,7 @@ export class BuildingsService {
             return {
                 id: b.id.toHexString(),
                 title: b.title,
+                featured: b.featured,
                 image: b.images[0],
             };
         });
@@ -87,6 +88,7 @@ export class BuildingsService {
             return {
                 id: b.id.toHexString(),
                 title: b.title,
+                featured: b.featured,
                 image: b.images[0],
             };
         });

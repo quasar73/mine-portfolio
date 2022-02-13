@@ -1,34 +1,31 @@
 .wrap {
-    cursor: pointer;
-    position: relative;
-    height: 300px;
-    transition: 0.2s;
+    height: 100%;
 
-    .overlap {
-        position: absolute;
-        backdrop-filter: brightness(40%);
-        width: 100%;
+    a.island {
         height: 100%;
-        border-radius: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        box-sizing: border-box;
 
-        .work-title {
-            color: white;
-            font-size: 26pt;
+        .content {
+            margin-top: -1.7rem;
+            padding-top: 20px;
+
+            .title {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                h1 {
+                    margin: 0;
+                }
+            }
         }
     }
 
-    .image {
-        width: 100%;
-        height: 100%;
+    img.image {
+        width: calc(100% + 2.5rem);
+        transform: translateX(-1.25rem) translateY(-1.25rem);
+        height: 300px;
         object-fit: cover;
-        border-radius: 0;
-    }
-
-    &:hover {
-        transition: 0.2s;
-        transform: scale(1.05);
+        border-radius: var(--tui-radius-l) var(--tui-radius-l) 0 0;
     }
 }

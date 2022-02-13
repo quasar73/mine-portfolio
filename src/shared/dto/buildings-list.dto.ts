@@ -9,4 +9,7 @@ export class BuildingsListDto {
 
     @ApiProperty()
     image: string;
+
+    @ApiProperty()
+    featured: boolean;
 }
