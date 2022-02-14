@@ -1,7 +1,14 @@
 <div class="wrap">
     <div class="content">
         <div class="breadcrumbs">
-            <tui-breadcrumbs size="l" class="tui-space_top-2">
+            <tui-breadcrumbs
+                size="l"
+                class="tui-space_top-2"
+                [class.tui-skeleton]="skeletonVisible"
+                [class.tui-skeleton_text]="skeletonVisible"
+                [class.tui-skeleton_short]="skeletonVisible"
+                [class.tui-skeleton_light]="false"
+            >
                 <ng-container *ngFor="let item of items">
                     <a *tuiBreadcrumb tuiLink [routerLink]="item.link">
                         {{ item.title }}
@@ -9,7 +16,13 @@
                 </ng-container>
             </tui-breadcrumbs>
         </div>
-        <div class="title tui-text_h2">
+        <div
+            class="title tui-text_h2"
+            [class.tui-skeleton]="skeletonVisible"
+            [class.tui-skeleton_text]="skeletonVisible"
+            [class.tui-skeleton_short]="skeletonVisible"
+            [class.tui-skeleton_light]="false"
+        >
             {{ building?.title }}
             <tui-marker-icon
                 *ngIf="building?.featured"
@@ -23,21 +36,27 @@
 
         <div tuiCarouselButtons class="carousel">
             <button
+                [class.tui-skeleton]="skeletonVisible"
+                [class.tui-skeleton_rounded]="skeletonVisible"
+                [class.tui-skeleton_light]="false"
                 tuiIconButton
                 icon="tuiIconChevronLeftLarge"
                 title="Previous"
                 (click)="carousel.prev()"
             ></button>
             <tui-carousel #carousel [(index)]="index">
-                <ng-container *ngFor="let image of building?.images">
+                <ng-container *ngFor="let image of building?.images ?? ['']">
                     <div class="carousel-content" *tuiItem>
                         <div class="carousel-image-wrap">
-                            <img [src]="image" alt="carousel-image" />
+                            <img [src]="image" loading="lazy" />
                         </div>
                     </div>
                 </ng-container>
             </tui-carousel>
             <button
+                [class.tui-skeleton]="skeletonVisible"
+                [class.tui-skeleton_rounded]="skeletonVisible"
+                [class.tui-skeleton_light]="false"
                 tuiIconButton
                 icon="tuiIconChevronRightLarge"
                 title="Next"
@@ -45,8 +64,22 @@
             ></button>
         </div>
 
-        <div class="desc-title tui-text_h3">Описание</div>
-        <div class="description tui-text_body-xl">
+        <div
+            class="desc-title tui-text_h3"
+            [class.tui-skeleton]="skeletonVisible"
+            [class.tui-skeleton_text]="skeletonVisible"
+            [class.tui-skeleton_short]="skeletonVisible"
+            [class.tui-skeleton_light]="false"
+        >
+            Описание
+        </div>
+        <div
+            class="description tui-text_body-xl"
+            [class.tui-skeleton]="skeletonVisible"
+            [class.tui-skeleton_text]="skeletonVisible"
+            [class.tui-skeleton_short]="skeletonVisible"
+            [class.tui-skeleton_light]="false"
+        >
             {{ building?.description }}
         </div>
     </div>

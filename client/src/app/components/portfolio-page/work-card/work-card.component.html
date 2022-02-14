@@ -6,7 +6,12 @@
         [hoverable]="true"
         class="island"
     >
-        <img alt="building image" class="image" [src]="building?.image" />
+        <img
+            alt="building image"
+            class="image"
+            loading="lazy"
+            [src]="building?.image ?? ''"
+        />
         <div class="content">
             <div class="title">
                 <h1 class="tui-text_h4">{{ building?.title }}</h1>

@@ -12,6 +12,7 @@ import {
     TuiHintModule,
     TuiLinkModule,
     TuiTextfieldControllerModule,
+    TuiLoaderModule,
 } from '@taiga-ui/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -30,6 +31,7 @@ import {
     TuiInputModule,
     TuiInputPasswordModule,
     TuiIslandModule,
+    TuiLazyLoadingModule,
     TuiMarkerIconModule,
     TuiPaginationModule,
     TuiProgressModule,
@@ -107,6 +109,8 @@ import { BuildingPageComponent } from './components/building-page/building-page.
         TuiProgressModule,
         TuiCheckboxLabeledModule,
         TuiBreadcrumbsModule,
+        TuiLazyLoadingModule,
+        TuiLoaderModule,
         ReactiveFormsModule,
         HttpClientModule,
         AuthenticationModule,

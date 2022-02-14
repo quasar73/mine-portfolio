@@ -14,6 +14,7 @@ export class BuildingPageComponent implements OnInit {
     building!: GetBuildingDto;
     index = 0;
     items: BreadcrumbModel[] = [];
+    skeletonVisible = false;
 
     constructor(
         private route: ActivatedRoute,
@@ -24,7 +25,9 @@ export class BuildingPageComponent implements OnInit {
         this.route.paramMap.subscribe((paramMap) => {
             this.id = paramMap.get('id') ?? '';
 
+            this.skeletonVisible = true;
             this.buildingsService.getBuilding(this.id).subscribe((result) => {
+                this.skeletonVisible = false;
                 if (result) {
                     this.building = result;
                     this.items = [
