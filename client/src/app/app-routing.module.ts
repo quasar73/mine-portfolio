@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeLayoutComponent } from './components/home-layout/home-layout.component';
 import { PortfolioPageComponent } from './components/portfolio-page/portfolio-page.component';
+import { ProtectedGuard } from 'ngx-auth';
 
 const routes: Routes = [
     { path: 'home', component: HomeLayoutComponent },
@@ -36,9 +37,11 @@ const routes: Routes = [
                         component: MessagesListComponent,
                     },
                 ],
+                canActivate: [ProtectedGuard],
             },
         ],
     },
+    { path: '**', redirectTo: 'home' },
 ];
 
 @NgModule({
