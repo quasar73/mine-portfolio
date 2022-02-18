@@ -43,8 +43,4 @@ export class AdminPageComponent {
     activeItemIndex = 0;
 
     constructor(private router: Router) {}
-
-    redirect(path: string): void {
-        this.router.navigate([`admin/${path}`]);
-    }
 }

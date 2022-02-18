@@ -4,7 +4,8 @@
             <button
                 *ngFor="let tab of tabs"
                 tuiTab
-                (click)="redirect(tab.path)"
+                [routerLink]="tab.path"
+                routerLinkActive="_active"
             >
                 <tui-svg class="tui-space_right-1" [src]="tab.icon"></tui-svg>
                 {{ tab.title }}
