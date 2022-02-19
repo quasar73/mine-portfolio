@@ -57,6 +57,8 @@ import { WorksListComponent } from './components/admin-page/works-list/works-lis
 import { AddWorkDialogComponent } from './components/admin-page/works-list/add-work-dialog/add-work-dialog.component';
 import { AddWorkDialogHeaderComponent } from './components/admin-page/works-list/add-work-dialog/add-work-dialog-header/add-work-dialog-header.component';
 import { BuildingPageComponent } from './components/building-page/building-page.component';
+import { WorksAccordionComponent } from './components/admin-page/works-list/works-accordion/works-accordion.component';
+import { WorksListItemComponent } from './components/admin-page/works-list/works-accordion/works-list-item/works-list-item.component';
 
 @NgModule({
     declarations: [
@@ -80,6 +82,8 @@ import { BuildingPageComponent } from './components/building-page/building-page.
         AddWorkDialogComponent,
         AddWorkDialogHeaderComponent,
         BuildingPageComponent,
+        WorksAccordionComponent,
+        WorksListItemComponent,
     ],
     imports: [
         BrowserModule,

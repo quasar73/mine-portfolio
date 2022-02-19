@@ -1,0 +1,18 @@
+<div class="wrap">
+    <tui-accordion>
+        <tui-accordion-item *ngFor="let building of buildings" class="container">
+            <div class="header">
+                <div class="title">{{ building.title }}</div>
+                <tui-marker-icon
+                    *ngIf="building?.featured"
+                    size="xs"
+                    src="tuiIconStarFilledLarge"
+                    mode="warning"
+                ></tui-marker-icon>
+            </div>
+            <ng-template tuiAccordionItemContent>
+                <mbp-works-list-item [buldingId]="building.id"></mbp-works-list-item>
+            </ng-template>
+        </tui-accordion-item>
+    </tui-accordion>
+</div>

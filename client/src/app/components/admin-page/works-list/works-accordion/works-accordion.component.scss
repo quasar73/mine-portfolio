@@ -1,0 +1,14 @@
+.wrap {
+    .container {
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .title {
+                margin-left: 12px;
+                font-size: 16pt;
+            }
+        }
+    }
+}
