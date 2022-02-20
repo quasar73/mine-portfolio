@@ -36,4 +36,8 @@ export class BuildingsService {
     updateBuildings(dto: UpdateBuildingDto): Observable<any> {
         return this.base.put<any>('buildings', dto);
     }
+
+    removeBuilding(id: string): Observable<any> {
+        return this.base.delete<any>(`buildings/${id}`);
+    }
 }

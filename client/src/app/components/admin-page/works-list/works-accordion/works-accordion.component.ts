@@ -26,4 +26,11 @@ export class WorksAccordionComponent implements OnInit {
             this.buildings[index].featured = updated.featured;
         }
     }
+
+    onDeleted(id: string): void {
+        const index = this.buildings.findIndex((b) => b.id === id);
+        if (index >= 0) {
+            this.buildings.splice(index, 1);
+        }
+    }
 }

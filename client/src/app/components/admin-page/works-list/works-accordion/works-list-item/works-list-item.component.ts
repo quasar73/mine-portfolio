@@ -14,6 +14,7 @@ export class WorksListItemComponent implements OnChanges {
     @Input() buldingId!: string;
 
     @Output() updated = new EventEmitter<UpdateBuildingModel>();
+    @Output() deleted = new EventEmitter<string>();
 
     buildingForm = new FormGroup({
         title: new FormControl(),
@@ -61,6 +62,19 @@ export class WorksListItemComponent implements OnChanges {
                 title: dto.title,
                 featured: dto.featured,
             });
+        });
+    }
+
+    remove(): void {
+        this.buildingsService.removeBuilding(this.buldingId).subscribe(() => {
+            this.notificationsService
+                .show(`Данные о рабооте "${this.building.title}" были удалены`, {
+                    label: 'Работа успешно удалена!',
+                    status: TuiNotification.Success,
+                })
+                .subscribe();
+
+            this.deleted.emit(this.buldingId);
         });
     }
 }

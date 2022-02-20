@@ -13,6 +13,7 @@
             <ng-template tuiAccordionItemContent>
                 <mbp-works-list-item
                     (updated)="onUpdated($event)"
+                    (deleted)="onDeleted($event)"
                     [buldingId]="building.id"
                 ></mbp-works-list-item>
             </ng-template>

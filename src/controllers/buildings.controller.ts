@@ -6,6 +6,7 @@ import { ApiTags, ApiBody, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import {
     Body,
     Controller,
+    Delete,
     Get,
     HttpCode,
     Param,
@@ -107,5 +108,17 @@ export class BuildingsController {
     async updateBuilding(@Body() dto: UpdateBuildingDto) {
         const building = await this.buildingsService.updateBuilding(dto);
         return building;
+    }
+
+    @ApiResponse({
+        status: 200,
+    })
+    @ApiBearerAuth()
+    @UseGuards(JwtAuthGuard)
+    @HttpCode(200)
+    @Delete(':id')
+    async daleteBuilding(@Param('id') id: string) {
+        await this.buildingsService.deleteBuilding(id);
+        return;
     }
 }
