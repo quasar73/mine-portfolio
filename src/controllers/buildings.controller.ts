@@ -1,3 +1,4 @@
+import { UpdateBuildingDto } from './../shared/dto/update-building.dto';
 import { BuildingsListDto } from './../shared/dto/buildings-list.dto';
 import { AddBuildingDto } from './../shared/dto/add-building.dto';
 import { JwtAuthGuard } from './../auth/guards/jwt.guard';
@@ -9,6 +10,7 @@ import {
     HttpCode,
     Param,
     Post,
+    Put,
     UploadedFiles,
     UseGuards,
     UseInterceptors,
@@ -91,6 +93,19 @@ export class BuildingsController {
     @Get(':id')
     async getBuilding(@Param('id') id: string) {
         const building = await this.buildingsService.getBuildingById(id);
+        return building;
+    }
+
+    @ApiResponse({
+        type: BuildingResponseDto,
+        status: 200,
+    })
+    @ApiBearerAuth()
+    @UseGuards(JwtAuthGuard)
+    @HttpCode(200)
+    @Put()
+    async updateBuilding(@Body() dto: UpdateBuildingDto) {
+        const building = await this.buildingsService.updateBuilding(dto);
         return building;
     }
 }

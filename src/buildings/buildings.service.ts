@@ -1,3 +1,4 @@
+import { UpdateBuildingDto } from './../shared/dto/update-building.dto';
 import { ConfigService } from '@nestjs/config';
 import { initializeApp } from '@firebase/app';
 import { BuildingsListDto } from './../shared/dto/buildings-list.dto';
@@ -92,5 +93,17 @@ export class BuildingsService {
                 image: b.images[0],
             };
         });
+    }
+
+    async updateBuilding(dto: UpdateBuildingDto): Promise<any> {
+        const building = await this.buildingsRepository.findOne(dto.id);
+        const { id, ...updateData } = dto;
+        await this.buildingsRepository.save({
+            id: dto.id,
+            ...building,
+            ...updateData,
+        });
+
+        return;
     }
 }

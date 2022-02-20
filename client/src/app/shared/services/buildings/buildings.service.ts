@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AddBuildingDto } from '../../dto/add-building.dto';
 import { GetBuildingDto } from '../../dto/get-building.dto';
 import { GetBuildingsDto } from '../../dto/get-buildings.dto';
+import { UpdateBuildingDto } from '../../dto/update-building.dto';
 
 @Injectable({ providedIn: 'root' })
 export class BuildingsService {
@@ -30,5 +31,9 @@ export class BuildingsService {
 
     getBuildings(): Observable<GetBuildingsDto[] | null> {
         return this.base.get<GetBuildingsDto[]>('buildings');
+    }
+
+    updateBuildings(dto: UpdateBuildingDto): Observable<any> {
+        return this.base.put<any>('buildings', dto);
     }
 }

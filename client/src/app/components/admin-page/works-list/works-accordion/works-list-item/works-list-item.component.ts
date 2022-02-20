@@ -1,7 +1,9 @@
 import { GetBuildingDto } from './../../../../../shared/dto/get-building.dto';
 import { BuildingsService } from './../../../../../shared/services/buildings/buildings.service';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { TuiNotification, TuiNotificationsService } from '@taiga-ui/core';
+import { UpdateBuildingModel } from 'src/app/shared/models/update-building.model';
 
 @Component({
     selector: 'mbp-works-list-item',
@@ -11,6 +13,8 @@ import { Component, Input, OnChanges } from '@angular/core';
 export class WorksListItemComponent implements OnChanges {
     @Input() buldingId!: string;
 
+    @Output() updated = new EventEmitter<UpdateBuildingModel>();
+
     buildingForm = new FormGroup({
         title: new FormControl(),
         description: new FormControl(),
@@ -18,7 +22,10 @@ export class WorksListItemComponent implements OnChanges {
     });
     building!: GetBuildingDto;
 
-    constructor(private buildingsService: BuildingsService) {}
+    constructor(
+        private buildingsService: BuildingsService,
+        private notificationsService: TuiNotificationsService
+    ) {}
 
     ngOnChanges(): void {
         if (this.buldingId) {
@@ -33,5 +40,27 @@ export class WorksListItemComponent implements OnChanges {
                 }
             });
         }
+    }
+
+    save(): void {
+        const dto = {
+            id: this.buldingId,
+            ...this.buildingForm.value,
+        };
+
+        this.buildingsService.updateBuildings(dto).subscribe(() => {
+            this.notificationsService
+                .show(`Данные о рабооте "${dto.title}" были успешно изменены`, {
+                    label: 'Работа успешно обновлена!',
+                    status: TuiNotification.Success,
+                })
+                .subscribe();
+
+            this.updated.emit({
+                id: dto.id,
+                title: dto.title,
+                featured: dto.featured,
+            });
+        });
     }
 }

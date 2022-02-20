@@ -11,7 +11,10 @@
                 ></tui-marker-icon>
             </div>
             <ng-template tuiAccordionItemContent>
-                <mbp-works-list-item [buldingId]="building.id"></mbp-works-list-item>
+                <mbp-works-list-item
+                    (updated)="onUpdated($event)"
+                    [buldingId]="building.id"
+                ></mbp-works-list-item>
             </ng-template>
         </tui-accordion-item>
     </tui-accordion>
