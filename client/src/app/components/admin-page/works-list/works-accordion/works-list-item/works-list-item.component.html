@@ -14,28 +14,28 @@
                 <div class="example">Сделать работу избранной</div>
             </tui-checkbox-labeled>
         </div>
-    </form>
-    <div class="buttons">
-        <button
-            tuiButton
-            type="button"
-            appearance="secondary"
-            [showLoader]="pending"
-            [disabled]="!saveEnabled"
-            (click)="save()"
-        >
-            Сохранить
-        </button>
+        <div class="buttons">
+            <button
+                tuiButton
+                type="button"
+                appearance="secondary"
+                [showLoader]="pending"
+                [disabled]="!saveEnabled"
+                (click)="save()"
+            >
+                Сохранить
+            </button>
 
-        <button
-            tuiButton
-            type="button"
-            appearance="accent"
-            class="tui-space_left-3"
-            [showLoader]="pending"
-            (click)="remove()"
-        >
-            Удалить
-        </button>
-    </div>
+            <button
+                tuiButton
+                type="button"
+                appearance="accent"
+                class="tui-space_left-3"
+                [showLoader]="pending"
+                (click)="remove()"
+            >
+                Удалить
+            </button>
+        </div>
+    </form>
 </div>

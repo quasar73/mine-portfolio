@@ -25,7 +25,7 @@ export class WorksListItemComponent implements OnChanges {
 
     building!: GetBuildingDto;
     formHash!: string;
-    pending = false;
+    pending = true;
     saveEnabled = false;
 
     constructor(
@@ -44,6 +44,7 @@ export class WorksListItemComponent implements OnChanges {
                         featured: this.building.featured,
                     });
                 }
+                this.pending = false;
             });
         }
 

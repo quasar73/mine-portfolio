@@ -1,9 +1,19 @@
 .wrap {
-    tui-checkbox-labeled {
-        text-align: left;
+    form {
+        display: grid;
+        grid-auto-rows: auto;
+        gap: 12px;
 
-        .example {
-            color: var(--tui-text-03);
+        .buttons {
+            margin-top: 12px;
+        }
+
+        tui-checkbox-labeled {
+            text-align: left;
+
+            .example {
+                color: var(--tui-text-03);
+            }
         }
     }
 }
