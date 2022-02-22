@@ -4,6 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { TuiNotification, TuiNotificationsService } from '@taiga-ui/core';
 import { UpdateBuildingModel } from 'src/app/shared/models/update-building.model';
+import * as md5 from 'md5';
 
 @Component({
     selector: 'mbp-works-list-item',
@@ -21,7 +22,11 @@ export class WorksListItemComponent implements OnChanges {
         description: new FormControl(),
         featured: new FormControl(false),
     });
+
     building!: GetBuildingDto;
+    formHash!: string;
+    pending = false;
+    saveEnabled = false;
 
     constructor(
         private buildingsService: BuildingsService,
@@ -41,6 +46,14 @@ export class WorksListItemComponent implements OnChanges {
                 }
             });
         }
+
+        this.buildingForm.valueChanges.subscribe((res) => {
+            if (this.formHash) {
+                this.saveEnabled = this.formHash !== md5(JSON.stringify(res));
+            } else {
+                this.formHash = md5(JSON.stringify(res));
+            }
+        });
     }
 
     save(): void {
@@ -48,6 +61,7 @@ export class WorksListItemComponent implements OnChanges {
             id: this.buldingId,
             ...this.buildingForm.value,
         };
+        this.pending = true;
 
         this.buildingsService.updateBuildings(dto).subscribe(() => {
             this.notificationsService
@@ -62,10 +76,15 @@ export class WorksListItemComponent implements OnChanges {
                 title: dto.title,
                 featured: dto.featured,
             });
+
+            this.pending = false;
+            this.saveEnabled = false;
+            this.formHash = md5(JSON.stringify(this.buildingForm.value));
         });
     }
 
     remove(): void {
+        this.pending = true;
         this.buildingsService.removeBuilding(this.buldingId).subscribe(() => {
             this.notificationsService
                 .show(`Данные о рабооте "${this.building.title}" были удалены`, {
@@ -75,6 +94,7 @@ export class WorksListItemComponent implements OnChanges {
                 .subscribe();
 
             this.deleted.emit(this.buldingId);
+            this.pending = false;
         });
     }
 }

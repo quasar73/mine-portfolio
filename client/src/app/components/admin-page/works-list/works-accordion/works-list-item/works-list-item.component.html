@@ -1,16 +1,29 @@
 <div class="wrap">
     <form [formGroup]="buildingForm">
-        <tui-input formControlName="title"> Название </tui-input>
-        <tui-text-area formControlName="description"> Описание </tui-text-area>
+        <tui-input formControlName="title" [readOnly]="pending"> Название </tui-input>
+        <tui-text-area formControlName="description" [readOnly]="pending">
+            Описание
+        </tui-text-area>
         <div class="featured-wrap">
-            <tui-checkbox-labeled size="l" formControlName="featured">
+            <tui-checkbox-labeled
+                size="l"
+                formControlName="featured"
+                [readOnly]="pending"
+            >
                 Избранная
                 <div class="example">Сделать работу избранной</div>
             </tui-checkbox-labeled>
         </div>
     </form>
     <div class="buttons">
-        <button tuiButton type="button" appearance="secondary" (click)="save()">
+        <button
+            tuiButton
+            type="button"
+            appearance="secondary"
+            [showLoader]="pending"
+            [disabled]="!saveEnabled"
+            (click)="save()"
+        >
             Сохранить
         </button>
 
@@ -19,6 +32,7 @@
             type="button"
             appearance="accent"
             class="tui-space_left-3"
+            [showLoader]="pending"
             (click)="remove()"
         >
             Удалить
