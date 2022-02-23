@@ -10,7 +10,7 @@ import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
     styleUrls: ['./works-list.component.scss'],
 })
 export class WorksListComponent {
-    private readonly dialog = this.dialogService.open<number>(
+    private readonly dialog = this.dialogService.open<any>(
         new PolymorpheusComponent(AddWorkDialogComponent, this.injector),
         {
             header: new PolymorpheusComponent(
@@ -26,10 +26,6 @@ export class WorksListComponent {
     ) {}
 
     addDialog(): void {
-        this.dialog.subscribe({
-            next: (data) => {
-                console.info('Dialog emitted data = ' + data);
-            },
-        });
+        this.dialog.subscribe();
     }
 }
