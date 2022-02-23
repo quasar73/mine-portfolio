@@ -13,9 +13,14 @@
             type="button"
             appearance="primary"
             [showLoader]="showLoader"
+            [disabled]="!captchaToken?.length"
             (click)="send()"
         >
             Отправить
         </button>
+        <re-captcha
+            (resolved)="resolved($event)"
+            siteKey="6LfUzJceAAAAADPEfYVAZ5-eGaHvh1m6InJN1aQT"
+        ></re-captcha>
     </form>
 </div>

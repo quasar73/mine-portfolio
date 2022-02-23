@@ -27,12 +27,17 @@ export class ContactMeComponent {
         ]),
     });
     showLoader = false;
+    captchaToken!: string;
 
     constructor(
         @Inject(TuiNotificationsService)
         private readonly notificationsService: TuiNotificationsService,
         private messagesService: MessagesService
     ) {}
+
+    resolved(captchaResponse: string) {
+        this.captchaToken = captchaResponse;
+    }
 
     send(): void {
         if (this.contactForm.invalid) {

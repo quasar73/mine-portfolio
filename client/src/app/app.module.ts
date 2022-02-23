@@ -32,6 +32,7 @@ import {
     TuiTextAreaModule,
 } from '@taiga-ui/kit';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 import { AboutMeComponent } from './components/home-layout/home-content/about-me/about-me.component';
 import { HomePageBlockComponent } from './components/home-layout/home-content/home-page-block/home-page-block.component';
@@ -102,6 +103,7 @@ import { AddWorkDialogHeaderComponent } from './components/admin-page/works-list
         HttpClientModule,
         AuthenticationModule,
         FormsModule,
+        RecaptchaModule,
     ],
     providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
     bootstrap: [AppComponent],
