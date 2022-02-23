@@ -63,6 +63,12 @@
                 (click)="carousel.next()"
             ></button>
         </div>
+        <tui-pagination
+            size="s"
+            class="pagination"
+            [length]="building?.images?.length ?? 0"
+            [(index)]="index"
+        ></tui-pagination>
 
         <div
             class="desc-title tui-text_h3"
