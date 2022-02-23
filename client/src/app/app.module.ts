@@ -12,6 +12,7 @@ import {
     TuiLinkModule,
     TuiTextfieldControllerModule,
     TuiLoaderModule,
+    TuiDialogModule,
 } from '@taiga-ui/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,12 +20,15 @@ import { AppRoutingModule } from './app-routing.module';
 import {
     TuiBreadcrumbsModule,
     TuiCarouselModule,
+    TuiCheckboxLabeledModule,
+    TuiInputFileModule,
     TuiInputModule,
     TuiInputPasswordModule,
     TuiIslandModule,
     TuiLazyLoadingModule,
     TuiMarkerIconModule,
     TuiPaginationModule,
+    TuiStepperModule,
     TuiTextAreaModule,
 } from '@taiga-ui/kit';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -45,6 +49,8 @@ import { HomeLayoutComponent } from './components/home-layout/home-layout.compon
 import { HomeHeaderComponent } from './components/home-layout/home-header/home-header.component';
 import { HomeContentComponent } from './components/home-layout/home-content/home-content.component';
 import { FeaturedWorkComponent } from './components/home-layout/home-content/featured-work/featured-work.component';
+import { AddWorkDialogComponent } from './components/admin-page/works-list/add-work-dialog/add-work-dialog.component';
+import { AddWorkDialogHeaderComponent } from './components/admin-page/works-list/add-work-dialog/add-work-dialog-header/add-work-dialog-header.component';
 
 @NgModule({
     declarations: [
@@ -63,12 +69,16 @@ import { FeaturedWorkComponent } from './components/home-layout/home-content/fea
         WorkCardComponent,
         AuthPageComponent,
         BuildingPageComponent,
+        AddWorkDialogComponent,
+        AddWorkDialogHeaderComponent,
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         TuiRootModule,
+        TuiDialogModule,
+        TuiStepperModule,
         TuiNotificationsModule,
         TuiButtonModule,
         TuiCarouselModule,
@@ -79,12 +89,14 @@ import { FeaturedWorkComponent } from './components/home-layout/home-content/fea
         TuiLinkModule,
         TuiMarkerIconModule,
         TuiInputModule,
+        TuiInputFileModule,
         TuiInputPasswordModule,
         TuiTextfieldControllerModule,
         TuiBreadcrumbsModule,
         TuiLazyLoadingModule,
         TuiLoaderModule,
         TuiIslandModule,
+        TuiCheckboxLabeledModule,
         TuiTextAreaModule,
         ReactiveFormsModule,
         HttpClientModule,
