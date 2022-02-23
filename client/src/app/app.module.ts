@@ -28,6 +28,7 @@ import {
     TuiLazyLoadingModule,
     TuiMarkerIconModule,
     TuiPaginationModule,
+    TuiProgressModule,
     TuiStepperModule,
     TuiTextAreaModule,
 } from '@taiga-ui/kit';
@@ -99,6 +100,7 @@ import { AddWorkDialogHeaderComponent } from './components/admin-page/works-list
         TuiIslandModule,
         TuiCheckboxLabeledModule,
         TuiTextAreaModule,
+        TuiProgressModule,
         ReactiveFormsModule,
         HttpClientModule,
         AuthenticationModule,
