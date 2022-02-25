@@ -4,8 +4,21 @@
             <button tuiStep [state]="activeIndex >= 1 ? 'pass' : 'normal'">
                 Информация
             </button>
-            <button tuiStep [disabled]="addWorkForm.invalid">Изображения</button>
-            <button tuiStep [disabled]="addWorkForm.invalid || !files.length">
+            <button
+                tuiStep
+                [disabled]="addWorkForm.invalid"
+                [state]="activeIndex >= 2 ? 'pass' : 'normal'"
+            >
+                Изображения
+            </button>
+            <button
+                tuiStep
+                [disabled]="addWorkForm.invalid || !files.length"
+                [state]="activeIndex >= 3 ? 'pass' : 'normal'"
+            >
+                Превью
+            </button>
+            <button tuiStep [disabled]="addWorkForm.invalid || !files.length || !preview">
                 Загрузка
             </button>
         </tui-stepper>
@@ -38,6 +51,14 @@
         </ng-template>
 
         <ng-template ngSwitchCase="2">
+            <tui-input-file
+                size="l"
+                [multiple]="false"
+                [(ngModel)]="preview"
+            ></tui-input-file>
+        </ng-template>
+
+        <ng-template ngSwitchCase="3">
             <div>{{ progressText }}</div>
             <progress tuiProgressBar max="100" size="s" [value]="progress"></progress>
         </ng-template>
@@ -55,7 +76,7 @@
             Назад
         </button>
         <button
-            *ngIf="activeIndex < 1"
+            *ngIf="activeIndex < 2"
             tuiButton
             type="button"
             appearance="primary"
@@ -65,7 +86,7 @@
             Далее
         </button>
         <button
-            *ngIf="activeIndex === 1"
+            *ngIf="activeIndex === 2"
             tuiButton
             type="button"
             appearance="primary"

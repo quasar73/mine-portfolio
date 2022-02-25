@@ -30,7 +30,9 @@ export class BuildingsService {
         const building = Building.create({
             ...addBuildingDto,
             featured: addBuildingDto.featured === 'true',
-            images: [...imagesPath],
+            preview: imagesPath[0],
+            minimizedPreview: imagesPath[1],
+            images: [...imagesPath.slice(2, imagesPath.length)],
         });
         await building.save();
 
@@ -48,7 +50,8 @@ export class BuildingsService {
                 id: b.id.toHexString(),
                 title: b.title,
                 featured: b.featured,
-                image: b.images[0],
+                preview: b.preview,
+                minimizedPreview: b.minimizedPreview,
             };
         });
     }
@@ -112,7 +115,8 @@ export class BuildingsService {
                 id: b.id.toHexString(),
                 title: b.title,
                 featured: b.featured,
-                image: b.images[0],
+                preview: b.preview,
+                minimizedPreview: b.minimizedPreview,
             };
         });
     }
@@ -131,7 +135,11 @@ export class BuildingsService {
 
     async deleteBuilding(id: string): Promise<any> {
         const building = await this.buildingsRepository.findOne(id);
-        await this.deleteImages(building.images);
+        await this.deleteImages([
+            building.preview,
+            building.minimizedPreview,
+            ...building.images,
+        ]);
         await this.buildingsRepository.delete(id);
 
         return;

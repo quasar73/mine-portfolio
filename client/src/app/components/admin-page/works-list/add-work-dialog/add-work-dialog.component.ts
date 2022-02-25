@@ -23,6 +23,7 @@ export class AddWorkDialogComponent {
         featured: new FormControl(false),
     });
     files: File[] = [];
+    preview!: File;
     progressText = '';
     progress = 0;
     progressDelta = 0;
@@ -50,11 +51,15 @@ export class AddWorkDialogComponent {
         this.pending = true;
         this.progressText = 'Сжатие изображений';
         this.progress = 0;
-        this.progressDelta = 100.0 / this.files.length;
+        this.progressDelta = 100.0 / (this.files.length + 2);
 
         const dto = {
             ...this.addWorkForm.value,
-            files: await this.compressImages(this.files),
+            files: [
+                ...(await this.compressImages([this.preview], 0.5)), // preview full size
+                ...(await this.compressImages([this.preview], 0.1, true)), // preview minimized
+                ...(await this.compressImages(this.files, 0.5)), // another images
+            ],
         };
 
         this.progressText = 'Загрузка на сервер';
@@ -71,9 +76,14 @@ export class AddWorkDialogComponent {
         });
     }
 
-    private async compressImages(files: File[]): Promise<File[]> {
+    private async compressImages(
+        files: File[],
+        maxSize: number,
+        isMinimized: boolean = false
+    ): Promise<File[]> {
         const options = {
-            maxSizeMB: 0.5,
+            maxSizeMB: maxSize,
+            maxWidthOrHeight: isMinimized ? 700 : undefined,
         };
         let compressedFiles: File[] = [];
 

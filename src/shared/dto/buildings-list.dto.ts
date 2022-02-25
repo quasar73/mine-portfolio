@@ -8,7 +8,10 @@ export class BuildingsListDto {
     title: string;
 
     @ApiProperty()
-    image: string;
+    preview: string;
+
+    @ApiProperty()
+    minimizedPreview: string;
 
     @ApiProperty()
     featured: boolean;

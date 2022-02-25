@@ -32,8 +32,10 @@ import {
     TuiStepperModule,
     TuiTextAreaModule,
 } from '@taiga-ui/kit';
+import { TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE } from '@taiga-ui/i18n';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecaptchaModule } from 'ng-recaptcha';
+import { of } from 'rxjs';
 
 import { AboutMeComponent } from './components/home-layout/home-content/about-me/about-me.component';
 import { HomePageBlockComponent } from './components/home-layout/home-content/home-page-block/home-page-block.component';
@@ -107,7 +109,10 @@ import { AddWorkDialogHeaderComponent } from './components/admin-page/works-list
         FormsModule,
         RecaptchaModule,
     ],
-    providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
+    providers: [
+        { provide: TUI_SANITIZER, useClass: NgDompurifySanitizer },
+        { provide: TUI_LANGUAGE, useValue: of(TUI_RUSSIAN_LANGUAGE) },
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

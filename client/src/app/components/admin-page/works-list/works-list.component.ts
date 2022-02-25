@@ -17,6 +17,7 @@ export class WorksListComponent {
                 AddWorkDialogHeaderComponent,
                 this.injector
             ),
+            size: 'l',
         }
     );
 

@@ -16,4 +16,10 @@ export class Building extends BaseEntity {
 
     @Column('string', { array: true })
     images: string[];
+
+    @Column()
+    preview: string;
+
+    @Column()
+    minimizedPreview: string;
 }
