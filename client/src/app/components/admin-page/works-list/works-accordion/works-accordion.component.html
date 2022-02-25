@@ -2,7 +2,12 @@
     <tui-accordion>
         <tui-accordion-item *ngFor="let building of buildings" class="container">
             <div class="header">
-                <div class="title">{{ building.title }}</div>
+                <div class="title">
+                    <span class="title-text">{{ building.title }}</span>
+                    <span *ngIf="unsavedId === building.id" class="unsaved-text">
+                        (не сохранено)
+                    </span>
+                </div>
                 <tui-marker-icon
                     *ngIf="building?.featured"
                     size="xs"
@@ -14,6 +19,7 @@
                 <mbp-works-list-item
                     (updated)="onUpdated($event)"
                     (deleted)="onDeleted($event)"
+                    (unsaved)="onUnsaved($event)"
                     [buldingId]="building.id"
                 ></mbp-works-list-item>
             </ng-template>

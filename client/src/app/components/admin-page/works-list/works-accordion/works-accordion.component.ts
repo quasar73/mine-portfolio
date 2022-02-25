@@ -1,3 +1,4 @@
+import { UnsavedModel } from './../../../../shared/models/unsaved.model';
 import { UpdateBuildingModel } from './../../../../shared/models/update-building.model';
 import { GetBuildingsDto } from './../../../../shared/dto/get-buildings.dto';
 import { BuildingsService } from './../../../../shared/services/buildings/buildings.service';
@@ -10,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorksAccordionComponent implements OnInit {
     buildings: GetBuildingsDto[] = [];
+    unsavedId!: string | null;
 
     constructor(private buildingsService: BuildingsService) {}
 
@@ -32,5 +34,9 @@ export class WorksAccordionComponent implements OnInit {
         if (index >= 0) {
             this.buildings.splice(index, 1);
         }
+    }
+
+    onUnsaved(unsaved: UnsavedModel): void {
+        this.unsavedId = unsaved.isUnsaved ? unsaved.id : null;
     }
 }

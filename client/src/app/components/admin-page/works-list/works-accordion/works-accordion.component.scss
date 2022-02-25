@@ -9,7 +9,16 @@
 
             .title {
                 margin-left: 12px;
-                font-size: 16pt;
+
+                .title-text {
+                    font-size: 16pt;
+                }
+
+                .unsaved-text {
+                    font-size: 10pt;
+                    font-weight: bold;
+                    color: var(--tui-negative);
+                }
             }
         }
     }
