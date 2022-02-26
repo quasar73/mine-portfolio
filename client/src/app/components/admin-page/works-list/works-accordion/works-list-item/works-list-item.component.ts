@@ -135,7 +135,7 @@ export class WorksListItemComponent implements OnChanges {
         const dto = {
             id: this.buldingId,
             preview: await compressUtility(this.preview, 0.5),
-            minimizedPreview: await compressUtility(this.preview, 0.1, 700),
+            minimizedPreview: await compressUtility(this.preview, 0.08, 600),
         };
 
         this.buildingsService.changePreview(dto).subscribe({

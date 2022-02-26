@@ -1,3 +1,4 @@
+import { compressUtility } from 'src/app/shared/utils/compress.utility';
 import { BuildingsService } from './../../../../shared/services/buildings/buildings.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ChangeDetectorRef, Component, Inject } from '@angular/core';
@@ -7,7 +8,6 @@ import {
     TuiNotificationsService,
 } from '@taiga-ui/core';
 import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus';
-import imageCompression from 'browser-image-compression';
 
 @Component({
     selector: 'mbp-add-work-dialog',
@@ -57,7 +57,7 @@ export class AddWorkDialogComponent {
             ...this.addWorkForm.value,
             files: [
                 ...(await this.compressImages([this.preview], 0.5)), // preview full size
-                ...(await this.compressImages([this.preview], 0.1, true)), // preview minimized
+                ...(await this.compressImages([this.preview], 0.08, true)), // preview minimized
                 ...(await this.compressImages(this.files, 0.5)), // another images
             ],
         };
@@ -81,16 +81,17 @@ export class AddWorkDialogComponent {
         maxSize: number,
         isMinimized: boolean = false
     ): Promise<File[]> {
-        const options = {
-            maxSizeMB: maxSize,
-            maxWidthOrHeight: isMinimized ? 700 : undefined,
-        };
         let compressedFiles: File[] = [];
 
         for (const file of files) {
-            const compressedBlob = await imageCompression(file, options);
-            const compressedFile = new File([compressedBlob], file.name);
-            compressedFiles.push(compressedFile);
+            const compressedFile = await compressUtility(
+                file,
+                maxSize,
+                isMinimized ? 600 : undefined
+            );
+            if (compressedFile) {
+                compressedFiles.push(compressedFile);
+            }
             this.progress += this.progressDelta;
             this.cdr.detectChanges();
         }
