@@ -14,5 +14,11 @@ export class BuildingResponseDto {
     featured: boolean;
 
     @ApiProperty()
+    preview: string;
+
+    @ApiProperty()
+    minimizedPreview: string;
+
+    @ApiProperty()
     images: string[];
 }

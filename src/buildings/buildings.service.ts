@@ -1,3 +1,4 @@
+import { GetBuildingDto } from './../../client/src/app/shared/dto/get-building.dto';
 import { UpdateBuildingDto } from './../shared/dto/update-building.dto';
 import { ConfigService } from '@nestjs/config';
 import { initializeApp } from '@firebase/app';
@@ -79,24 +80,6 @@ export class BuildingsService {
         return imagesPath;
     }
 
-    async deleteImages(imagesPath: string[]): Promise<any> {
-        const app = initializeApp({
-            apiKey: this.configService.get<string>('FIREBASE_KEY'),
-            storageBucket: this.configService.get<string>('BUCKET'),
-        });
-        const storage = getStorage(app);
-
-        for (const path of imagesPath) {
-            const imageRef = ref(storage, await this.getNameFormPath(path));
-            await deleteObject(imageRef);
-        }
-    }
-
-    private async getNameFormPath(path: string): Promise<string> {
-        const parts = path.split('/');
-        return parts[parts.length - 1].split('?')[0];
-    }
-
     async getBuildingById(id: string): Promise<BuildingResponseDto> {
         const building = await this.buildingsRepository.findOne(id);
         return {
@@ -141,6 +124,40 @@ export class BuildingsService {
             ...building.images,
         ]);
         await this.buildingsRepository.delete(id);
+
+        return;
+    }
+
+    async changePreview(id: string, imagesPath: string[]): Promise<void> {
+        const building = await this.buildingsRepository.findOne(id);
+        await this.deleteImages([building.preview, building.minimizedPreview]);
+
+        await this.buildingsRepository.save({
+            id: id,
+            ...building,
+            preview: imagesPath[0],
+            minimizedPreview: imagesPath[1],
+        });
+
+        return;
+    }
+
+    private async getNameFormPath(path: string): Promise<string> {
+        const parts = path.split('/');
+        return parts[parts.length - 1].split('?')[0];
+    }
+
+    private async deleteImages(imagesPath: string[]): Promise<void> {
+        const app = initializeApp({
+            apiKey: this.configService.get<string>('FIREBASE_KEY'),
+            storageBucket: this.configService.get<string>('BUCKET'),
+        });
+        const storage = getStorage(app);
+
+        for (const path of imagesPath) {
+            const imageRef = ref(storage, await this.getNameFormPath(path));
+            await deleteObject(imageRef);
+        }
 
         return;
     }

@@ -1,10 +1,18 @@
+import { UnsavedModel } from './../../../../../shared/models/unsaved.model';
 import { GetBuildingDto } from './../../../../../shared/dto/get-building.dto';
 import { BuildingsService } from './../../../../../shared/services/buildings/buildings.service';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
-import { TuiNotification, TuiNotificationsService } from '@taiga-ui/core';
+import { Component, EventEmitter, Inject, Input, OnChanges, Output } from '@angular/core';
+import {
+    TuiDialogContext,
+    TuiDialogService,
+    TuiNotification,
+    TuiNotificationsService,
+} from '@taiga-ui/core';
 import { UpdateBuildingModel } from 'src/app/shared/models/update-building.model';
+import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 import * as md5 from 'md5';
+import { compressUtility } from 'src/app/shared/utils/compress.utility';
 
 @Component({
     selector: 'mbp-works-list-item',
@@ -16,6 +24,7 @@ export class WorksListItemComponent implements OnChanges {
 
     @Output() updated = new EventEmitter<UpdateBuildingModel>();
     @Output() deleted = new EventEmitter<string>();
+    @Output() unsaved = new EventEmitter<UnsavedModel>();
 
     buildingForm = new FormGroup({
         title: new FormControl(),
@@ -27,8 +36,10 @@ export class WorksListItemComponent implements OnChanges {
     formHash!: string;
     pending = true;
     saveEnabled = false;
+    preview!: File | null;
 
     constructor(
+        @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
         private buildingsService: BuildingsService,
         private notificationsService: TuiNotificationsService
     ) {}
@@ -54,6 +65,10 @@ export class WorksListItemComponent implements OnChanges {
             } else {
                 this.formHash = md5(JSON.stringify(res));
             }
+            this.unsaved.emit({
+                id: this.buldingId,
+                isUnsaved: this.saveEnabled,
+            });
         });
     }
 
@@ -81,6 +96,10 @@ export class WorksListItemComponent implements OnChanges {
             this.pending = false;
             this.saveEnabled = false;
             this.formHash = md5(JSON.stringify(this.buildingForm.value));
+            this.unsaved.emit({
+                id: this.buldingId,
+                isUnsaved: this.saveEnabled,
+            });
         });
     }
 
@@ -96,6 +115,46 @@ export class WorksListItemComponent implements OnChanges {
 
             this.deleted.emit(this.buldingId);
             this.pending = false;
+        });
+    }
+
+    changePreview(
+        content: PolymorpheusContent<TuiDialogContext>,
+        header: PolymorpheusContent
+    ): void {
+        this.dialogService
+            .open(content, {
+                header: header,
+                label: 'Изменить превью',
+            })
+            .subscribe();
+    }
+
+    async publishPreview(): Promise<void> {
+        this.pending = true;
+        const dto = {
+            id: this.buldingId,
+            preview: await compressUtility(this.preview, 0.5),
+            minimizedPreview: await compressUtility(this.preview, 0.1, 700),
+        };
+
+        this.buildingsService.changePreview(dto).subscribe({
+            next: (imagesPath) => {
+                this.preview = null;
+                if (imagesPath) {
+                    this.building.preview = imagesPath[0];
+                    this.building.minimizedPreview = imagesPath[1];
+                }
+                this.notificationsService
+                    .show('', {
+                        label: 'Превью изменено!',
+                        status: TuiNotification.Success,
+                    })
+                    .subscribe();
+            },
+            complete: () => {
+                this.pending = false;
+            },
         });
     }
 }

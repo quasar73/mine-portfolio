@@ -111,6 +111,37 @@ export class BuildingsController {
     }
 
     @ApiResponse({
+        type: [String],
+        status: 200,
+    })
+    @ApiBearerAuth()
+    @UseGuards(JwtAuthGuard)
+    @UseInterceptors(
+        FilesInterceptor('previews', null, {
+            storage: multerGoogleStorage.storageEngine({
+                projectId: process.env.FIREBASE_PROJECT_ID,
+                keyFilename: './env/storage-keys.json',
+                bucket: process.env.BUCKET,
+                filename: (req, file, cb) => {
+                    const fileNameSplit = file.originalname.split('.');
+                    const fileExt = fileNameSplit[fileNameSplit.length - 1];
+                    cb(null, `${Date.now()}.${fileExt}`);
+                },
+            }),
+        }),
+    )
+    @HttpCode(200)
+    @Put('preview/:id')
+    async changePreview(
+        @Param('id') id: string,
+        @UploadedFiles() files: Express.Multer.File[],
+    ) {
+        const imagesPath = await this.buildingsService.processImages(files);
+        await this.buildingsService.changePreview(id, imagesPath);
+        return imagesPath;
+    }
+
+    @ApiResponse({
         status: 200,
     })
     @ApiBearerAuth()

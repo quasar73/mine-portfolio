@@ -3,5 +3,7 @@ export interface GetBuildingDto {
     title: string;
     description: string;
     featured: boolean;
+    preview: string;
+    minimizedPreview: string;
     images: string[];
 }

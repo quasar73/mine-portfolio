@@ -18,12 +18,23 @@
             <button
                 tuiButton
                 type="button"
-                appearance="secondary"
+                appearance="primary"
                 [showLoader]="pending"
                 [disabled]="!saveEnabled"
                 (click)="save()"
             >
                 Сохранить
+            </button>
+
+            <button
+                tuiButton
+                type="button"
+                appearance="secondary"
+                class="tui-space_left-3"
+                [showLoader]="pending"
+                (click)="changePreview(changePreviewDialog, dialogHeader)"
+            >
+                Изменить превью
             </button>
 
             <button
@@ -39,3 +50,32 @@
         </div>
     </form>
 </div>
+
+<ng-template #changePreviewDialog let-observer>
+    <div class="content">
+        <tui-input-file
+            accept="image/*"
+            size="l"
+            [disabled]="pending"
+            [(ngModel)]="preview"
+        ></tui-input-file>
+        <div class="button-wrap">
+            <button
+                tuiButton
+                type="button"
+                appearance="primary"
+                [disabled]="!preview || pending"
+                [showLoader]="pending"
+                (click)="publishPreview()"
+            >
+                Завершить
+            </button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #dialogHeader>
+    <div class="header">
+        <img [src]="building.preview" alt="preview" />
+    </div>
+</ng-template>

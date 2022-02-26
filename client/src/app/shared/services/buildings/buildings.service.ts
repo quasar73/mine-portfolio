@@ -5,6 +5,7 @@ import { AddBuildingDto } from '../../dto/add-building.dto';
 import { GetBuildingDto } from '../../dto/get-building.dto';
 import { GetBuildingsDto } from '../../dto/get-buildings.dto';
 import { UpdateBuildingDto } from '../../dto/update-building.dto';
+import { ChangePreviewDto } from '../../dto/change-preview.dto';
 
 @Injectable({ providedIn: 'root' })
 export class BuildingsService {
@@ -35,6 +36,15 @@ export class BuildingsService {
 
     updateBuildings(dto: UpdateBuildingDto): Observable<any> {
         return this.base.put<any>('buildings', dto);
+    }
+
+    changePreview(dto: ChangePreviewDto): Observable<string[] | null> {
+        const form = new FormData();
+        if (dto.preview && dto.minimizedPreview) {
+            form.append('previews', dto.preview);
+            form.append('previews', dto.minimizedPreview);
+        }
+        return this.base.put<string[]>(`buildings/preview/${dto.id}`, form);
     }
 
     removeBuilding(id: string): Observable<any> {
