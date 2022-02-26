@@ -33,6 +33,7 @@ import { WorksListItemComponent } from '../components/admin-page/works-list/work
 import { AdminPageComponent } from '../components/admin-page/admin-page.component';
 import { MessagesListComponent } from '../components/admin-page/messages-list/messages-list.component';
 import { WorksListComponent } from '../components/admin-page/works-list/works-list.component';
+import { SettingsPageComponent } from '../components/admin-page/settings-page/settings-page.component';
 
 @NgModule({
     declarations: [
@@ -41,6 +42,7 @@ import { WorksListComponent } from '../components/admin-page/works-list/works-li
         AdminPageComponent,
         MessagesListComponent,
         WorksListComponent,
+        SettingsPageComponent,
     ],
     imports: [
         CommonModule,

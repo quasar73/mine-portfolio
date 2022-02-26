@@ -1,0 +1,33 @@
+<div class="wrap">
+    <form [formGroup]="settingsForm">
+        <div class="tui-form__row">
+            <tui-input
+                tuiTextfieldExampleText="Введите свой telegram"
+                formControlName="telegram"
+            >
+                Telegram
+            </tui-input>
+        </div>
+
+        <div class="tui-form__row">
+            <tui-input
+                tuiTextfieldExampleText="Введите свой discord"
+                formControlName="discord"
+            >
+                Discord
+            </tui-input>
+        </div>
+
+        <div class="tui-form__row">
+            <tui-text-area formControlName="aboutMe" [expandable]="true">
+                Обо мне
+            </tui-text-area>
+        </div>
+
+        <div class="tui-form__buttons">
+            <button tuiButton type="button" appearance="primary" (click)="save()">
+                Сохранить
+            </button>
+        </div>
+    </form>
+</div>

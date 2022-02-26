@@ -1,3 +1,4 @@
+import { SettingsPageComponent } from './../components/admin-page/settings-page/settings-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminPageComponent } from '../components/admin-page/admin-page.component';
@@ -19,7 +20,7 @@ const routes: Routes = [
             },
             {
                 path: 'settings',
-                component: MessagesListComponent,
+                component: SettingsPageComponent,
             },
         ],
     },

@@ -19,11 +19,11 @@ export class AboutMeComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        const settings = ['about_me', 'telegram', 'discord'];
+        const settings = ['aboutMe', 'telegram', 'discord'];
         this.settingsService.getManyValue(settings).subscribe((res) => {
             this.discord = res?.discord;
             this.telegram = res?.telegram;
-            this.aboutMe = res?.about_me;
+            this.aboutMe = res?.aboutMe;
         });
     }
 
