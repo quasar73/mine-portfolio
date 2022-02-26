@@ -1,18 +1,8 @@
 <div class="about-me-grid">
     <div class="about-me-text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque alias
-        accusantium facilis. Suscipit ad expedita voluptates. Possimus nisi illo
-        asperiores quae architecto voluptatem dolore cumque omnis! Modi nesciunt
-        tempore soluta. Lorem ipsum dolor sit, amet consectetur adipisicing
-        elit. Sed quae, nihil sit tempora aperiam saepe odio, autem quaerat
-        incidunt necessitatibus non. Cumque, quaerat! Ducimus soluta provident
-        eveniet voluptates obcaecati aliquam!
+        {{ aboutMe }}
     </div>
-    <img
-        class="player"
-        src="../../../../../assets/images/player.png"
-        alt="player"
-    />
+    <img class="player" src="../../../../../assets/images/player.png" alt="player" />
     <div class="about-me-contacts">
         <a tuiLink (click)="copy(telegram)" [tuiHint]="telegram">Telegram</a>
         <a tuiLink (click)="copy(discord)" [tuiHint]="discord">Discord</a>

@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
 import { MessagesModule } from './messages/messages.module';
 import { BuildingsModule } from './buildings/buildings.module';
+import { SettingsModule } from './settings/settings.module';
 
 @Module({
     imports: [
@@ -15,6 +16,7 @@ import { BuildingsModule } from './buildings/buildings.module';
         DatabaseModule,
         MessagesModule,
         BuildingsModule,
+        SettingsModule,
     ],
     controllers: [],
     providers: [],

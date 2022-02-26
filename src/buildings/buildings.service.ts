@@ -1,4 +1,3 @@
-import { GetBuildingDto } from './../../client/src/app/shared/dto/get-building.dto';
 import { UpdateBuildingDto } from './../shared/dto/update-building.dto';
 import { ConfigService } from '@nestjs/config';
 import { initializeApp } from '@firebase/app';
