@@ -157,4 +157,12 @@ export class WorksListItemComponent implements OnChanges {
             },
         });
     }
+
+    discardChanges(): void {
+        this.buildingForm.setValue({
+            title: this.building.title,
+            description: this.building.description,
+            featured: this.building.featured,
+        });
+    }
 }

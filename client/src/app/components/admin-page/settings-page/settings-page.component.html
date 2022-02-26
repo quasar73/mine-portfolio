@@ -4,6 +4,7 @@
             <tui-input
                 tuiTextfieldExampleText="Введите свой telegram"
                 formControlName="telegram"
+                [readOnly]="pending"
             >
                 Telegram
             </tui-input>
@@ -13,20 +14,44 @@
             <tui-input
                 tuiTextfieldExampleText="Введите свой discord"
                 formControlName="discord"
+                [readOnly]="pending"
             >
                 Discord
             </tui-input>
         </div>
 
         <div class="tui-form__row">
-            <tui-text-area formControlName="aboutMe" [expandable]="true">
+            <tui-text-area
+                formControlName="aboutMe"
+                [expandable]="true"
+                [readOnly]="pending"
+            >
                 Обо мне
             </tui-text-area>
         </div>
 
         <div class="tui-form__buttons">
-            <button tuiButton type="button" appearance="primary" (click)="save()">
+            <button
+                tuiButton
+                type="button"
+                appearance="primary"
+                [disabled]="!saveEnabled"
+                [showLoader]="pending"
+                (click)="save()"
+            >
                 Сохранить
+            </button>
+
+            <button
+                tuiButton
+                type="button"
+                class="tui-space_left-3"
+                appearance="secondary"
+                [disabled]="!saveEnabled"
+                [showLoader]="pending"
+                (click)="discardChanges()"
+            >
+                Отменить зменения
             </button>
         </div>
     </form>

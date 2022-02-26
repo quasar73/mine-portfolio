@@ -32,6 +32,18 @@
                 appearance="secondary"
                 class="tui-space_left-3"
                 [showLoader]="pending"
+                [disabled]="!saveEnabled"
+                (click)="discardChanges()"
+            >
+                Отменить изменения
+            </button>
+
+            <button
+                tuiButton
+                type="button"
+                appearance="secondary"
+                class="tui-space_left-3"
+                [showLoader]="pending"
                 (click)="changePreview(changePreviewDialog, dialogHeader)"
             >
                 Изменить превью

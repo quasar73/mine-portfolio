@@ -2,6 +2,7 @@ import { SettingsService } from './../../../shared/services/settings/settings.se
 import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { TuiNotification, TuiNotificationsService } from '@taiga-ui/core';
+import * as md5 from 'md5';
 
 @Component({
     selector: 'mbp-settings-page',
@@ -15,24 +16,35 @@ export class SettingsPageComponent implements OnInit {
         discord: new FormControl(),
     });
 
+    formHash!: string;
+    saveEnabled = false;
+    pending = false;
+    buffer: any;
+
     constructor(
         private settingsService: SettingsService,
         private notificationsService: TuiNotificationsService
     ) {}
 
     ngOnInit(): void {
+        this.settingsForm.valueChanges.subscribe((res) => {
+            if (this.formHash) {
+                this.saveEnabled = this.formHash !== md5(JSON.stringify(res));
+            } else {
+                this.formHash = md5(JSON.stringify(res));
+            }
+        });
+
         this.settingsService
             .getManyValue([...Object.keys(this.settingsForm.controls)])
             .subscribe((res) => {
-                Object.keys(res).forEach((key) => {
-                    if (this.settingsForm.contains(key)) {
-                        this.settingsForm.controls[key].setValue(res[key]);
-                    }
-                });
+                this.settingsForm.setValue({ ...res });
+                this.buffer = res;
             });
     }
 
     save(): void {
+        this.pending = true;
         this.settingsService.update(this.settingsForm.value).subscribe(() => {
             this.notificationsService
                 .show('', {
@@ -40,6 +52,15 @@ export class SettingsPageComponent implements OnInit {
                     status: TuiNotification.Success,
                 })
                 .subscribe();
+            this.formHash = md5(JSON.stringify(this.settingsForm.value));
+            this.saveEnabled = false;
+            this.pending = false;
+        });
+    }
+
+    discardChanges(): void {
+        this.settingsForm.setValue({
+            ...this.buffer,
         });
     }
 }
