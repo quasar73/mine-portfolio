@@ -40,4 +40,18 @@ export class SettingsService {
 
         return settingData;
     }
+
+    async updateSettings(dto: any): Promise<void> {
+        const keys = Object.keys(dto);
+        for (const key of keys) {
+            await this.settingsRepository.update(
+                { key },
+                {
+                    value: dto[key],
+                },
+            );
+        }
+
+        return;
+    }
 }

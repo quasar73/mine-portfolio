@@ -16,4 +16,8 @@ export class SettingsService {
     getManyValue(keys: string[]): Observable<any> {
         return this.base.get<any>('settings/many', { keys });
     }
+
+    update(dto: any): Observable<any> {
+        return this.base.put<any>('settings', dto);
+    }
 }

@@ -8,6 +8,7 @@ import {
     Post,
     UseGuards,
     Body,
+    Put,
 } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
 import { AddSettingDto } from 'src/shared/dto/add-setting.dto';
@@ -53,5 +54,17 @@ export class SettingsController {
     async addSetting(@Body() dto: AddSettingDto) {
         const setting = await this.settingsService.addSetting(dto);
         return setting;
+    }
+
+    @ApiBearerAuth()
+    @ApiResponse({
+        status: 200,
+    })
+    @UseGuards(JwtAuthGuard)
+    @HttpCode(200)
+    @Put()
+    async updateSettings(@Body() dto: any) {
+        await this.settingsService.updateSettings(dto);
+        return;
     }
 }
