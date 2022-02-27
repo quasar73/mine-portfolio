@@ -43,5 +43,40 @@
         .header-actions {
             display: flex;
         }
+
+        .hamburger {
+            display: none;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .wrap {
+        .header {
+            justify-content: center;
+
+            .site-name {
+                .title {
+                    font-size: 24pt;
+                    line-height: 24pt;
+                }
+
+                .logo {
+                    height: 36px;
+                    width: 36px;
+                }
+            }
+
+            .header-actions {
+                display: none;
+            }
+
+            .hamburger {
+                position: absolute;
+                display: block;
+                right: 4px;
+                margin-bottom: -6px;
+            }
+        }
     }
 }

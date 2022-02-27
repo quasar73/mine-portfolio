@@ -40,5 +40,24 @@
                 Выход
             </button>
         </div>
+
+        <div class="hamburger">
+            <tui-hosted-dropdown [content]="hamburgerContent" #dropdown>
+                <button
+                    tuiIconButton
+                    appearance="flat"
+                    type="button"
+                    icon="tuiIconMenuLarge"
+                    [pseudoHovered]="dropdown.open || null"
+                ></button>
+            </tui-hosted-dropdown>
+            <ng-template #hamburgerContent>
+                <tui-data-list>
+                    <button tuiOption routerLink="../home" class="active">Главная</button>
+                    <button tuiOption routerLink="../portfolio">Портфолио</button>
+                    <button tuiOption routerLink="../home">Связаться</button>
+                </tui-data-list>
+            </ng-template>
+        </div>
     </div>
 </div>
