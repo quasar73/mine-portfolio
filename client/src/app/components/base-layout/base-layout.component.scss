@@ -2,3 +2,9 @@ main {
     padding-top: 32px;
     min-height: calc(100vh - 80px - 55px - 32px - 32px);
 }
+
+@media only screen and (max-width: 600px) {
+    main {
+        padding-top: 16px;
+    }
+}

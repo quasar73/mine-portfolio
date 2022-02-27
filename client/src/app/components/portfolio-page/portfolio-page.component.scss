@@ -11,7 +11,7 @@
     .works-grid {
         padding-top: 64px;
         display: grid;
-        gap: 48px;
+        gap: 32px;
         grid-template-columns: repeat(3, 1fr);
 
         mbp-work-card {
@@ -36,6 +36,7 @@
         .works-grid {
             grid-template-columns: 1fr;
             padding-top: 32px;
+            gap: 16px;
         }
 
         .page-title {
