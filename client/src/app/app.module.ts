@@ -13,6 +13,8 @@ import {
     TuiTextfieldControllerModule,
     TuiLoaderModule,
     TuiDialogModule,
+    TuiDataListModule,
+    TuiHostedDropdownModule,
 } from '@taiga-ui/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -103,6 +105,8 @@ import { AddWorkDialogHeaderComponent } from './components/admin-page/works-list
         TuiCheckboxLabeledModule,
         TuiTextAreaModule,
         TuiProgressModule,
+        TuiDataListModule,
+        TuiHostedDropdownModule,
         ReactiveFormsModule,
         HttpClientModule,
         AuthenticationModule,

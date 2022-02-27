@@ -4,7 +4,7 @@
     </div>
     <img class="player" src="../../../../../assets/images/player.png" alt="player" />
     <div class="about-me-contacts">
-        <a tuiLink (click)="copy(telegram)" [tuiHint]="telegram">Telegram</a>
-        <a tuiLink (click)="copy(discord)" [tuiHint]="discord">Discord</a>
+        <a tuiLink (click)="copy(telegram)" [tuiHint]="telegram ?? ''">Telegram</a>
+        <a tuiLink (click)="copy(discord)" [tuiHint]="discord ?? ''">Discord</a>
     </div>
 </div>

@@ -4,6 +4,7 @@
     background-image: url('../../../../assets/images/header-background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     position: relative;
 
     .overlap {
@@ -12,7 +13,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: rgba(0, 0, 0, 0.65);
         position: relative;
 
         .welcoming-text {
@@ -29,14 +30,18 @@
             -o-user-select: none;
 
             .title {
+                padding: 0px 16px 0px 16px;
                 font-size: 64pt;
                 line-height: 64pt;
                 margin-bottom: 32px;
+                text-align: center;
             }
 
             .subtitle {
+                padding: 0px 16px 0px 16px;
                 font-size: 20pt;
                 line-height: 20pt;
+                text-align: center;
             }
         }
 
@@ -77,6 +82,10 @@
                 }
             }
 
+            .hamburger {
+                display: none;
+            }
+
             .header-actions {
                 display: flex;
 
@@ -110,6 +119,54 @@
                 cursor: pointer;
                 color: white;
                 background: rgba(255, 255, 255, 0.3);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .wrap {
+        .overlap {
+            .welcoming-text {
+                .title {
+                    padding: 0px 16px 0px 16px;
+                    font-size: 36pt;
+                    margin-bottom: 48px;
+                    line-height: 36pt;
+                }
+
+                .subtitle {
+                    padding: 0px 16px 0px 16px;
+                    font-size: 14pt;
+                    line-height: 14pt;
+                }
+            }
+
+            .header {
+                justify-content: center;
+
+                .site-name {
+                    .title {
+                        font-size: 24pt;
+                        line-height: 24pt;
+                    }
+
+                    .logo {
+                        height: 36px;
+                        width: 36px;
+                    }
+                }
+
+                .header-actions {
+                    display: none;
+                }
+
+                .hamburger {
+                    position: absolute;
+                    display: block;
+                    right: 4px;
+                    margin-bottom: -6px;
+                }
             }
         }
     }
