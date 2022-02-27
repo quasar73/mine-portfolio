@@ -23,3 +23,20 @@
         margin-top: 16px;
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .wrap {
+        padding-top: 64px;
+
+        .title {
+            .title-text {
+                font-size: 20pt;
+                line-height: 20pt;
+            }
+
+            .underline {
+                width: 290px;
+            }
+        }
+    }
+}
