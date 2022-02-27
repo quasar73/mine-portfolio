@@ -30,3 +30,16 @@
         }
     }
 }
+
+@media only screen and (max-width: 900px) {
+    .about-me-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 56px;
+        gap: 32px;
+
+        img.player {
+            display: none;
+        }
+    }
+}
