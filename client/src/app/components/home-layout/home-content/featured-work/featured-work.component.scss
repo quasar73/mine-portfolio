@@ -44,3 +44,22 @@
         }
     }
 }
+
+@media only screen and (max-width: 900px) {
+    .carousel {
+        .carousel-content {
+            .carousel-image-wrap {
+                height: 200px;
+            }
+
+            .image-name {
+                font-size: 18pt;
+                line-height: 18pt;
+            }
+        }
+
+        button {
+            display: none;
+        }
+    }
+}
