@@ -36,6 +36,7 @@ export class WorksListItemComponent implements OnChanges {
     formHash!: string;
     pending = true;
     saveEnabled = false;
+    imagePending!: boolean;
     preview!: File | null;
 
     constructor(
@@ -164,5 +165,9 @@ export class WorksListItemComponent implements OnChanges {
             description: this.building.description,
             featured: this.building.featured,
         });
+    }
+
+    onImageDelete(imageUrl: string): void {
+        console.log(imageUrl);
     }
 }

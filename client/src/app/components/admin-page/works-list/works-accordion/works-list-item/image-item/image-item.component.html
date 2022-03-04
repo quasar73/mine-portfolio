@@ -1,0 +1,11 @@
+<div class="wrap" (click)="remove()" [class.disabled]="disabled">
+    <div class="overlay">
+        <tui-marker-icon
+            class="trashbox"
+            mode="error"
+            size="m"
+            src="tuiIconTrashLarge"
+        ></tui-marker-icon>
+    </div>
+    <img loading="lazy" [src]="image" alt="image" />
+</div>

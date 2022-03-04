@@ -20,6 +20,13 @@
             }
         }
     }
+
+    .images {
+        display: grid;
+        gap: 8px;
+        margin-top: 32px;
+        grid-template-columns: repeat(5, 1fr);
+    }
 }
 
 .header {

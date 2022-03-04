@@ -61,6 +61,16 @@
             </button>
         </div>
     </form>
+
+    <div class="images">
+        <mbp-image-item
+            *ngFor="let image of building?.images ?? []"
+            [image]="image"
+            [disabled]="imagePending"
+            (deleted)="onImageDelete(image)"
+        >
+        </mbp-image-item>
+    </div>
 </div>
 
 <ng-template #changePreviewDialog let-observer>

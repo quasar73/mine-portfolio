@@ -34,6 +34,7 @@ import { AdminPageComponent } from '../components/admin-page/admin-page.componen
 import { MessagesListComponent } from '../components/admin-page/messages-list/messages-list.component';
 import { WorksListComponent } from '../components/admin-page/works-list/works-list.component';
 import { SettingsPageComponent } from '../components/admin-page/settings-page/settings-page.component';
+import { ImageItemComponent } from '../components/admin-page/works-list/works-accordion/works-list-item/image-item/image-item.component';
 
 @NgModule({
     declarations: [
@@ -43,6 +44,7 @@ import { SettingsPageComponent } from '../components/admin-page/settings-page/se
         MessagesListComponent,
         WorksListComponent,
         SettingsPageComponent,
+        ImageItemComponent,
     ],
     imports: [
         CommonModule,
