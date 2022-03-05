@@ -6,39 +6,59 @@
         </a>
 
         <div class="header-actions">
-            <button tuiButton type="button" appearance="flat" routerLink="../home">
+            <a
+                tuiButton
+                type="button"
+                iconRight="tuiIconDesktopLarge"
+                routerLink="../home"
+                appearance="flat"
+                class="tui-space_right-2"
+            >
                 Главная
-            </button>
-            <button tuiButton type="button" appearance="flat" routerLink="../portfolio">
+            </a>
+            <a
+                tuiButton
+                type="button"
+                iconRight="tuiIconCompanyLarge"
+                routerLink="../portfolio"
+                appearance="flat"
+                class="tui-space_right-2"
+            >
                 Портфолио
-            </button>
-            <button
+            </a>
+            <a
                 *ngIf="(authService.isAuthorized() | async) === false"
                 tuiButton
+                iconRight="tuiIconMailLarge"
                 type="button"
+                href="../home#contactme"
                 appearance="flat"
-                routerLink="../home"
+                class="tui-space_right-2"
             >
                 Связаться
-            </button>
-            <button
+            </a>
+            <a
                 *ngIf="authService.isAuthorized() | async"
                 tuiButton
+                iconRight="tuiIconMenuLarge"
                 type="button"
-                appearance="flat"
                 routerLink="../admin/works"
+                appearance="flat"
+                class="tui-space_right-2"
             >
                 Админка
-            </button>
-            <button
+            </a>
+            <a
                 *ngIf="authService.isAuthorized() | async"
                 tuiButton
+                iconRight="tuiIconLogoutLarge"
                 type="button"
                 appearance="flat"
+                class="tui-space_right-2"
                 (click)="logout()"
             >
                 Выход
-            </button>
+            </a>
         </div>
 
         <div class="hamburger">
