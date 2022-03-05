@@ -64,6 +64,55 @@ export class BuildingsController {
         return building;
     }
 
+    @ApiBody({
+        type: DeleteImageDto,
+    })
+    @ApiResponse({
+        status: 200,
+    })
+    @ApiBearerAuth()
+    @UseGuards(JwtAuthGuard)
+    @HttpCode(200)
+    @Post('removeimage')
+    async daleteImage(@Body() dto: DeleteImageDto) {
+        await this.buildingsService.deleteImage(dto);
+        return;
+    }
+
+    @ApiBody({
+        type: DeleteImageDto,
+    })
+    @ApiResponse({
+        status: 200,
+        type: [String],
+    })
+    @ApiBearerAuth()
+    @UseGuards(JwtAuthGuard)
+    @HttpCode(200)
+    @UseInterceptors(
+        FilesInterceptor('files', null, {
+            storage: multerGoogleStorage.storageEngine({
+                projectId: process.env.FIREBASE_PROJECT_ID,
+                keyFilename: './env/storage-keys.json',
+                bucket: process.env.BUCKET,
+                filename: (req, file, cb) => {
+                    const fileNameSplit = file.originalname.split('.');
+                    const fileExt = fileNameSplit[fileNameSplit.length - 1];
+                    cb(null, `${Date.now()}.${fileExt}`);
+                },
+            }),
+        }),
+    )
+    @Post(':id')
+    async addImages(
+        @Param('id') id: string,
+        @UploadedFiles() files: Express.Multer.File[],
+    ) {
+        const imagesPath = await this.buildingsService.processImages(files);
+        const images = await this.buildingsService.addImages(id, imagesPath);
+        return images;
+    }
+
     @ApiResponse({
         type: [BuildingsListDto],
         status: 200,
@@ -140,21 +189,6 @@ export class BuildingsController {
         const imagesPath = await this.buildingsService.processImages(files);
         await this.buildingsService.changePreview(id, imagesPath);
         return imagesPath;
-    }
-
-    @ApiBody({
-        type: DeleteImageDto,
-    })
-    @ApiResponse({
-        status: 200,
-    })
-    @ApiBearerAuth()
-    @UseGuards(JwtAuthGuard)
-    @HttpCode(200)
-    @Post('removeimage')
-    async daleteImage(@Body() dto: DeleteImageDto) {
-        await this.buildingsService.deleteImage(dto);
-        return;
     }
 
     @ApiResponse({

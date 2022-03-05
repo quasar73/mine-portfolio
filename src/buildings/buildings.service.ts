@@ -116,6 +116,14 @@ export class BuildingsService {
         return;
     }
 
+    async addImages(buildingId: string, images: string[]): Promise<string[]> {
+        const building = await this.buildingsRepository.findOne(buildingId);
+        building.images.push(...images);
+        await building.save();
+
+        return images;
+    }
+
     async deleteBuilding(id: string): Promise<any> {
         const building = await this.buildingsRepository.findOne(id);
         await this.deleteImages([
