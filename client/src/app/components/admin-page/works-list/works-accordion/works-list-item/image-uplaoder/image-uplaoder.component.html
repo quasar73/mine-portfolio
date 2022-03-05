@@ -1,0 +1,17 @@
+<div class="wrap">
+    <tui-input-file
+        size="l"
+        [disabled]="pending"
+        [multiple]="true"
+        [(ngModel)]="files"
+    ></tui-input-file>
+    <button
+        tuiButton
+        type="button"
+        class="tui-space_top-3"
+        [showLoader]="pending"
+        (click)="addImages()"
+    >
+        Загрузить
+    </button>
+</div>

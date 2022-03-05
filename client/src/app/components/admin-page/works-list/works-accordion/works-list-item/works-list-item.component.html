@@ -1,4 +1,5 @@
 <div class="wrap">
+    <div class="tui-text_h5 tui-space_bottom-4">Основная информация</div>
     <form [formGroup]="buildingForm">
         <tui-input formControlName="title" [readOnly]="pending"> Название </tui-input>
         <tui-text-area formControlName="description" [readOnly]="pending">
@@ -62,6 +63,13 @@
         </div>
     </form>
 
+    <div class="tui-text_h5 tui-space_top-5 tui-space_bottom-4">Добавить изображения</div>
+    <div class="upload-image">
+        <mbp-image-uplaoder [id]="buldingId" (added)="onImageAdded($event)">
+        </mbp-image-uplaoder>
+    </div>
+
+    <div class="tui-text_h5 tui-space_top-5 tui-space_bottom-4">Изображения</div>
     <div class="images">
         <mbp-image-item
             *ngFor="let image of building?.images ?? []"

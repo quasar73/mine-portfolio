@@ -197,4 +197,14 @@ export class WorksListItemComponent implements OnChanges {
                 .subscribe();
         }
     }
+
+    onImageAdded(images: string[]): void {
+        this.notificationsService
+            .show(`Изображения добавлены из работы "${this.building.title}"`, {
+                label: 'Изображения добавлены!',
+                status: TuiNotification.Success,
+            })
+            .subscribe();
+        this.building.images.push(...images);
+    }
 }

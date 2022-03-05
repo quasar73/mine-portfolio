@@ -57,4 +57,12 @@ export class BuildingsService {
             imageUrl,
         });
     }
+
+    addImages(id: string, files: File[]): Observable<string[] | null> {
+        const form = new FormData();
+        files.forEach((file) => {
+            form.append('files', file);
+        });
+        return this.base.post<string[]>(`buildings/${id}`, form);
+    }
 }

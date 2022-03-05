@@ -35,6 +35,7 @@ import { MessagesListComponent } from '../components/admin-page/messages-list/me
 import { WorksListComponent } from '../components/admin-page/works-list/works-list.component';
 import { SettingsPageComponent } from '../components/admin-page/settings-page/settings-page.component';
 import { ImageItemComponent } from '../components/admin-page/works-list/works-accordion/works-list-item/image-item/image-item.component';
+import { ImageUplaoderComponent } from '../components/admin-page/works-list/works-accordion/works-list-item/image-uplaoder/image-uplaoder.component';
 
 @NgModule({
     declarations: [
@@ -45,6 +46,7 @@ import { ImageItemComponent } from '../components/admin-page/works-list/works-ac
         WorksListComponent,
         SettingsPageComponent,
         ImageItemComponent,
+        ImageUplaoderComponent,
     ],
     imports: [
         CommonModule,
