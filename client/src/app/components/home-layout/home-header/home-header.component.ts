@@ -1,11 +1,7 @@
-import {
-    animate,
-    state,
-    style,
-    transition,
-    trigger,
-} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/shared/services/auth/authentication.service';
 
 @Component({
     selector: 'mbp-home-header',
@@ -23,7 +19,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
                     style({
                         opacity: '1',
                         transform: 'translateY(0px)',
-                    }),
+                    })
                 ),
             ]),
         ]),
@@ -36,7 +32,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
                     '.8s ease-in',
                     style({
                         opacity: '1',
-                    }),
+                    })
                 ),
             ]),
         ]),
@@ -45,13 +41,13 @@ import { Component, EventEmitter, Output } from '@angular/core';
                 'true',
                 style({
                     transform: 'translateY(-8px)',
-                }),
+                })
             ),
             state(
                 'false',
                 style({
                     transform: 'translateY(8px)',
-                }),
+                })
             ),
             transition('*<=>*', animate('.7s')),
         ]),
@@ -62,5 +58,10 @@ export class HomeHeaderComponent {
 
     arrowState = false;
 
-    constructor() {}
+    constructor(public authService: AuthenticationService, private router: Router) {}
+
+    logout(): void {
+        this.authService.logout();
+        this.router.navigate(['home']);
+    }
 }

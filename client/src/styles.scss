@@ -1,3 +1,11 @@
 mbp-add-work-dialog-header {
     width: 100%;
 }
+
+tui-wrapper[data-appearance='header-link'] {
+    color: white;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+}

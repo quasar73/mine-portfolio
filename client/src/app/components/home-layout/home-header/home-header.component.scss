@@ -88,21 +88,6 @@
 
             .header-actions {
                 display: flex;
-
-                a {
-                    color: white;
-                    font-size: 16pt;
-                    text-decoration: none;
-                    margin-right: 24px;
-
-                    &.active {
-                        text-decoration: underline;
-                    }
-
-                    &:hover {
-                        color: rgb(200, 200, 200);
-                    }
-                }
             }
         }
 
