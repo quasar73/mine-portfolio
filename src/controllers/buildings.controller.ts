@@ -20,6 +20,7 @@ import { BuildingsService } from 'src/buildings/buildings.service';
 import { BuildingResponseDto } from 'src/shared/dto/building-response.dto';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import * as multerGoogleStorage from 'multer-google-storage';
+import { DeleteImageDto } from 'src/shared/dto/delete-image.dto';
 
 @ApiTags('Buildings')
 @Controller('api/buildings')
@@ -139,6 +140,21 @@ export class BuildingsController {
         const imagesPath = await this.buildingsService.processImages(files);
         await this.buildingsService.changePreview(id, imagesPath);
         return imagesPath;
+    }
+
+    @ApiBody({
+        type: DeleteImageDto,
+    })
+    @ApiResponse({
+        status: 200,
+    })
+    @ApiBearerAuth()
+    @UseGuards(JwtAuthGuard)
+    @HttpCode(200)
+    @Delete()
+    async daleteImage(@Body() dto: DeleteImageDto) {
+        await this.buildingsService.deleteImage(dto);
+        return;
     }
 
     @ApiResponse({

@@ -14,6 +14,7 @@ import {
     getStorage,
     ref,
 } from '@firebase/storage';
+import { DeleteImageDto } from 'src/shared/dto/delete-image.dto';
 
 @Injectable()
 export class BuildingsService {
@@ -137,6 +138,24 @@ export class BuildingsService {
             preview: imagesPath[0],
             minimizedPreview: imagesPath[1],
         });
+
+        return;
+    }
+
+    async deleteImage(dto: DeleteImageDto): Promise<void> {
+        const app = initializeApp({
+            apiKey: this.configService.get<string>('FIREBASE_KEY'),
+            storageBucket: this.configService.get<string>('BUCKET'),
+        });
+        const storage = getStorage(app);
+
+        const imageRef = ref(storage, await this.getNameFormPath(dto.imageUrl));
+        await deleteObject(imageRef);
+
+        const building = await this.buildingsRepository.findOne(dto.buildingId);
+        const index = building.images.findIndex((i) => i === dto.imageUrl);
+        building.images.splice(index, 1);
+        await building.save();
 
         return;
     }
