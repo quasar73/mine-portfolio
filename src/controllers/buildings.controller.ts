@@ -151,7 +151,7 @@ export class BuildingsController {
     @ApiBearerAuth()
     @UseGuards(JwtAuthGuard)
     @HttpCode(200)
-    @Delete()
+    @Post('removeimage')
     async daleteImage(@Body() dto: DeleteImageDto) {
         await this.buildingsService.deleteImage(dto);
         return;

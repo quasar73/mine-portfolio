@@ -168,6 +168,33 @@ export class WorksListItemComponent implements OnChanges {
     }
 
     onImageDelete(imageUrl: string): void {
-        console.log(imageUrl);
+        const minImages = 1;
+
+        if (this.building?.images?.length > minImages) {
+            this.imagePending = true;
+            this.buildingsService.removeImage(this.building.id, imageUrl).subscribe({
+                next: () => {
+                    this.notificationsService
+                        .show(`Изображение удалено из работы "${this.building.title}"`, {
+                            label: 'Изображени удалено!',
+                            status: TuiNotification.Success,
+                        })
+                        .subscribe();
+                    this.imagePending = false;
+                    const index = this.building.images.findIndex((i) => i === imageUrl);
+                    this.building.images.splice(index, 1);
+                },
+                error: () => {
+                    this.imagePending = false;
+                },
+            });
+        } else {
+            this.notificationsService
+                .show(`Минимальное число изображений в работе - ${minImages}`, {
+                    label: 'Операция отменена!',
+                    status: TuiNotification.Warning,
+                })
+                .subscribe();
+        }
     }
 }

@@ -50,4 +50,11 @@ export class BuildingsService {
     removeBuilding(id: string): Observable<any> {
         return this.base.delete<any>(`buildings/${id}`);
     }
+
+    removeImage(buildingId: string, imageUrl: string): Observable<any> {
+        return this.base.post<any>('buildings/removeimage', {
+            buildingId,
+            imageUrl,
+        });
+    }
 }
