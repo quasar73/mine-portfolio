@@ -13,14 +13,17 @@ const routes: Routes = [
             {
                 path: 'messages',
                 component: MessagesListComponent,
+                data: { title: 'Сообщения' },
             },
             {
                 path: 'works',
                 component: WorksListComponent,
+                data: { title: 'Работы' },
             },
             {
                 path: 'settings',
                 component: SettingsPageComponent,
+                data: { title: 'Настройки' },
             },
         ],
     },

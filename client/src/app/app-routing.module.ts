@@ -8,15 +8,27 @@ import { PortfolioPageComponent } from './components/portfolio-page/portfolio-pa
 import { ProtectedGuard } from 'ngx-auth';
 
 const routes: Routes = [
-    { path: 'home', component: HomeLayoutComponent },
+    { path: 'home', component: HomeLayoutComponent, data: { title: 'Главная' } },
     { path: '', pathMatch: 'full', redirectTo: 'home' },
     {
         path: '',
         component: BaseLayoutComponent,
         children: [
-            { path: 'portfolio', component: PortfolioPageComponent },
-            { path: 'building/:id', component: BuildingPageComponent },
-            { path: 'auth', component: AuthPageComponent },
+            {
+                path: 'portfolio',
+                component: PortfolioPageComponent,
+                data: { title: 'Портфолио' },
+            },
+            {
+                path: 'building/:id',
+                component: BuildingPageComponent,
+                data: { title: 'Работа' },
+            },
+            {
+                path: 'auth',
+                component: AuthPageComponent,
+                data: { title: 'Аутентификация' },
+            },
             {
                 path: 'admin',
                 loadChildren: () =>
