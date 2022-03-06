@@ -1,15 +1,10 @@
 FROM node:12.19.0-alpine3.9 AS development
 
 WORKDIR /usr/src/app
-
 COPY package*.json ./
-
 RUN npm install glob rimraf
-
 RUN npm install --only=development
-
 COPY . .
-
 RUN npm run build
 
 FROM node:12.19.0-alpine3.9 as production
@@ -33,15 +28,12 @@ ENV PASSWORD=${PASSWORD}
 ENV JWT_SECRET=${JWT_SECRET}
 
 WORKDIR /usr/src/app
-
 COPY package*.json ./
-
 RUN npm install --only=production
-
 COPY . .
-
 COPY --from=development /usr/src/app/dist ./dist
 
 EXPOSE 80
 EXPOSE 443
+
 CMD ["node", "dist/main"]
