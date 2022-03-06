@@ -19,13 +19,13 @@ jobs:
             - name: Build, Push and Release a Docker container to Heroku.
               uses: gonuit/heroku-docker-deploy@v1.3.3
               env:
-                  DB_CONN: ${{ sercets.DB_CONN }}
-                  GCLOUD_PROJECT: ${{ sercets.GCLOUD_PROJECT }}
-                  GCS_BUCKET: ${{ sercets.GCS_BUCKET }}
-                  GCS_KEYFILE: ${{ sercets.GCS_KEYFILE }}
-                  LOGIN: ${{ sercets.LOGIN }}
-                  PASSWORD: ${{ sercets.PASSWORD }}
-                  JWT_SECRET: ${{ sercets.JWT_SECRET }}
+                  DB_CONN: ${{ secrets.DB_CONN }}
+                  GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT }}
+                  GCS_BUCKET: ${{ secrets.GCS_BUCKET }}
+                  GCS_KEYFILE: ${{ secrets.GCS_KEYFILE }}
+                  LOGIN: ${{ secrets.LOGIN }}
+                  PASSWORD: ${{ secrets.PASSWORD }}
+                  JWT_SECRET: ${{ secrets.JWT_SECRET }}
               with:
                   email: ${{ secrets.HEROKU_EMAIL }}
                   heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
