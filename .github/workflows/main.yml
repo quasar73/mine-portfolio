@@ -27,13 +27,22 @@ jobs:
                   docker_options: '--no-cache'
                   process_type: web
 
-            - name: Build and Deploy Angular app
+            - name: Setup node
+              working-directory: ./client
               uses: actions/setup-node@master
               with:
                   node-version: '16.x'
-            - run: cd client && npm install
-            - run: cd client && npm run build --aot
-            - uses: w9jds/firebase-action@master
+            - name: Install Angualr node packages
+              working-directory: ./client
+              run: npm install
+
+            - name: Build Angular app
+              working-directory: ./client
+              run: npm run build --aot
+
+            - name: Deploy Angular app
+              uses: w9jds/firebase-action@master
+              working-directory: ./client
               with:
                   args: deploy --only hosting
               env:
