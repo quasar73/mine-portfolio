@@ -9,7 +9,7 @@ import { SettingsModule } from './settings/settings.module';
 @Module({
     imports: [
         ConfigModule.forRoot({
-            envFilePath: './env/.dev.env',
+            envFilePath: ['./env/.dev.env', '.env'],
             isGlobal: true,
         }),
         AuthModule,

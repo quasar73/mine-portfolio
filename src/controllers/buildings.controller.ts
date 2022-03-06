@@ -39,9 +39,6 @@ export class BuildingsController {
     @UseInterceptors(
         FilesInterceptor('files', null, {
             storage: multerGoogleStorage.storageEngine({
-                projectId: process.env.FIREBASE_PROJECT_ID,
-                keyFilename: './env/storage-keys.json',
-                bucket: process.env.BUCKET,
                 filename: (req, file, cb) => {
                     const fileNameSplit = file.originalname.split('.');
                     const fileExt = fileNameSplit[fileNameSplit.length - 1];
@@ -92,9 +89,6 @@ export class BuildingsController {
     @UseInterceptors(
         FilesInterceptor('files', null, {
             storage: multerGoogleStorage.storageEngine({
-                projectId: process.env.FIREBASE_PROJECT_ID,
-                keyFilename: './env/storage-keys.json',
-                bucket: process.env.BUCKET,
                 filename: (req, file, cb) => {
                     const fileNameSplit = file.originalname.split('.');
                     const fileExt = fileNameSplit[fileNameSplit.length - 1];
@@ -169,9 +163,6 @@ export class BuildingsController {
     @UseInterceptors(
         FilesInterceptor('previews', null, {
             storage: multerGoogleStorage.storageEngine({
-                projectId: process.env.FIREBASE_PROJECT_ID,
-                keyFilename: './env/storage-keys.json',
-                bucket: process.env.BUCKET,
                 filename: (req, file, cb) => {
                     const fileNameSplit = file.originalname.split('.');
                     const fileExt = fileNameSplit[fileNameSplit.length - 1];
