@@ -9,7 +9,7 @@ on:
     workflow_dispatch:
 
 jobs:
-    build:
+    build-and-deploy:
         runs-on: ubuntu-latest
 
         steps:
@@ -27,10 +27,14 @@ jobs:
                   docker_options: '--no-cache'
                   process_type: web
 
-            - name: Run a one-line script
-              run: echo Hello, world!
-
-            - name: Run a multi-line script
-              run: |
-                  echo Add other actions to build,
-                  echo test, and deploy your project.
+            - name: Build and Deploy Angular app
+              uses: actions/setup-node@master
+              with:
+                  node-version: '16.x'
+            - run: cd client && npm install
+            - run: cd client && npm run build --aot
+            - uses: w9jds/firebase-action@maste
+              with:
+                  args: deploy --only hosting
+              env:
+                  FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
