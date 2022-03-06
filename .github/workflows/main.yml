@@ -27,7 +27,7 @@ jobs:
                   PASSWORD: ${{ secrets.PASSWORD }}
                   JWT_SECRET: ${{ secrets.JWT_SECRET }}
               with:
-                  email: ${{ secrets.HEROKU_EMAIL }}
+                  heroku_email: ${{ secrets.HEROKU_EMAIL }}
                   heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
                   heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
                   usedocker: true
