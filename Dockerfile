@@ -33,7 +33,4 @@ RUN npm install --only=production
 COPY . .
 COPY --from=development /usr/src/app/dist ./dist
 
-EXPOSE 80
-EXPOSE 443
-
 CMD ["node", "dist/main"]
