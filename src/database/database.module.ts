@@ -7,7 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
             type: 'mongodb',
             url: process.env.DB_CONN,
             synchronize: true,
-            entities: ['dist/**/*.entity{.ts,.js}'],
+            entities: ['./**/*.entity{.ts,.js}'],
         }),
     ],
 })
