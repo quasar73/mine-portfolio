@@ -17,7 +17,7 @@ jobs:
               uses: actions/checkout@v2
 
             - name: Build, Push and Release a Docker container to Heroku.
-              uses: gonuit/heroku-docker-deploy@v1.3.3
+              uses: akhileshns/heroku-deploy@v3.12.12
               env:
                   DB_CONN: ${{ secrets.DB_CONN }}
                   GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT }}
@@ -30,10 +30,15 @@ jobs:
                   email: ${{ secrets.HEROKU_EMAIL }}
                   heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
                   heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-                  dockerfile_directory: ./
-                  dockerfile_name: Dockerfile
-                  docker_options: '--no-cache'
-                  process_type: web
+                  usedocker: true
+                  docker_build_args: |
+                      DB_CONN
+                      GCLOUD_PROJECT
+                      GCS_BUCKET
+                      GCS_KEYFILE
+                      LOGIN
+                      PASSWORD
+                      JWT_SECRET
 
             - name: Setup node
               uses: actions/setup-node@master
