@@ -28,7 +28,6 @@ jobs:
                   process_type: web
 
             - name: Setup node
-              working-directory: ./client
               uses: actions/setup-node@master
               with:
                   node-version: '16.x'
