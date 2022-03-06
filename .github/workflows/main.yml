@@ -31,6 +31,7 @@ jobs:
               uses: actions/setup-node@master
               with:
                   node-version: '16.x'
+
             - name: Install Angualr node packages
               working-directory: ./client
               run: npm install
@@ -41,7 +42,6 @@ jobs:
 
             - name: Deploy Angular app
               uses: w9jds/firebase-action@master
-              working-directory: ./client
               with:
                   args: deploy --only hosting
               env:
