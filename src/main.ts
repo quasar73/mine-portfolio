@@ -2,6 +2,8 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { createWriteStream } from 'fs';
+import { get } from 'https';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule, { cors: true });
@@ -14,6 +16,11 @@ async function bootstrap() {
     SwaggerModule.setup('api', app, document);
 
     app.useGlobalPipes(new ValidationPipe());
+
+    const file = createWriteStream(process.env.GCS_KEYFILE);
+    get(process.env.KEYFILE_URL, (response) => {
+        response.pipe(file);
+    });
 
     await app.listen(process.env.PORT || 3000);
 }

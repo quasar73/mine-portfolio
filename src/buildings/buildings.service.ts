@@ -60,23 +60,14 @@ export class BuildingsService {
     async processImages(files: Express.Multer.File[]): Promise<string[]> {
         const app = initializeApp({
             apiKey: this.configService.get<string>('FIREBASE_KEY'),
-            storageBucket: this.configService.get<string>('BUCKET'),
+            storageBucket: this.configService.get<string>('GCS_BUCKET'),
         });
         const storage = getStorage(app);
-
         const imagesPath = Promise.all(
             files.map(async (f) => {
-                return await getDownloadURL(
-                    ref(
-                        storage,
-                        `${this.configService.get<string>('BUCKET')}/${
-                            f.filename
-                        }`,
-                    ),
-                );
+                return await getDownloadURL(ref(storage, f.filename));
             }),
         );
-
         return imagesPath;
     }
 
@@ -153,7 +144,7 @@ export class BuildingsService {
     async deleteImage(dto: DeleteImageDto): Promise<void> {
         const app = initializeApp({
             apiKey: this.configService.get<string>('FIREBASE_KEY'),
-            storageBucket: this.configService.get<string>('BUCKET'),
+            storageBucket: this.configService.get<string>('GCS_BUCKET'),
         });
         const storage = getStorage(app);
 
@@ -176,7 +167,7 @@ export class BuildingsService {
     private async deleteImages(imagesPath: string[]): Promise<void> {
         const app = initializeApp({
             apiKey: this.configService.get<string>('FIREBASE_KEY'),
-            storageBucket: this.configService.get<string>('BUCKET'),
+            storageBucket: this.configService.get<string>('GCS_BUCKET'),
         });
         const storage = getStorage(app);
 
